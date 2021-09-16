@@ -1,0 +1,15 @@
+<div id="container" gdAreas="header | content | footer" gdRows="auto 1fr auto">
+  <div gdArea="header" fxLayout="row">
+    <button fxFlex mat-button color="primary" (click)="fillWith(10)">10</button>
+    <button fxFlex mat-button color="primary" (click)="fillWith(50)">50</button>
+    <button fxFlex mat-button color="primary" (click)="fillWith(100)">100</button>
+  </div>
+  <div gdArea="content">
+    <div *ngFor="let e of elements; even as ev" [class.highlight]="ev">
+      {{ e }}
+    </div>
+  </div>
+  <div gdArea="footer">
+    <p>We 💕 Angular!</p>
+  </div>
+</div>

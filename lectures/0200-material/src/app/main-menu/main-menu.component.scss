@@ -1,0 +1,23 @@
+@import '~../../include.scss';
+
+// The following style is applied to the element that hosts the component.
+// See also https://angular.io/guide/component-styles#host.
+:host {
+  text-align: center;
+  margin-top: 10px;
+  display: block;
+}
+
+a {
+  // Note that we can do calculations inside CSS. For details see
+  // https://developer.mozilla.org/en-US/docs/Web/CSS/calc() or https://css-tricks.com/a-complete-guide-to-calc-in-css/.
+  // Here we take 100% of the viewport width (see https://developer.mozilla.org/en-US/docs/Web/CSS/length#units)
+  // and subtract the required padding.
+  width: calc(100vw - 30px);
+
+  // Buttons should not be too wide on widescreen monitors.
+  max-width: 550px;
+
+  // Center text inside of button
+  text-align: center;
+}

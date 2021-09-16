@@ -1,0 +1,53 @@
+@import '~../../include.scss';
+
+#container {
+  // Make sure that container covers 100% of the screen.
+  // This ensures that our footer will be displayed at the bottom
+  // of the screen.
+  height: calc(100vh - #{$global-header-height});
+  margin-top: 5px;
+}
+
+div[gdArea='header'], div[gdArea='content'] {
+  // Limit width
+  max-width: 350px;
+
+  // Center data container. Remember this trick!
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+div[gdArea='content'] {
+  // Enable scrolling for this div
+  overflow-y: auto;
+
+  // `>` means: Only direct child. For details see
+  // https://developer.mozilla.org/en-US/docs/Web/CSS/Child_combinator
+  >div {
+    padding: 5px;
+    padding-left: 16px;
+
+    // Note the SCSS ampersand operator. For details see
+    // https://css-tricks.com/the-sass-ampersand/.
+    &.highlight {
+      // Reference primary color for zebra striping. We take a
+      // lighter version of the primary color. See also
+      // https://tomastrajan.medium.com/the-complete-guide-to-angular-material-themes-4d165a9d24d1
+      background-color: mat-color($my-primary, 50);
+    }
+  }
+}
+
+div[gdArea='footer'] {
+  // For footer, we use an accent color for background and a contrast
+  // color for the text. See also
+  // https://tomastrajan.medium.com/the-complete-guide-to-angular-material-themes-4d165a9d24d1
+  background-color: mat-color($my-accent, A200);
+  color: mat-contrast($my-accent, A200);
+
+  p {
+    text-align: center;
+    margin-top: 5px;
+  }
+}

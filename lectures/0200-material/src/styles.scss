@@ -1,0 +1,25 @@
+// We import Material theming. See also
+// https://material.angular.io/guide/theming#defining-a-theme
+@use '~@angular/material' as mat;
+@import '~./include.scss';
+@include mat.core();
+
+// We define our theme by specifying our colors. See also *include.scss*.
+$my-theme: mat.define-light-theme((
+ color: (
+   primary: $my-primary,
+   accent: $my-accent,
+   warn: $my-warn,
+ )
+));
+@include mat.all-component-themes($my-theme);
+
+// Make sure our body covers 100% of the viewport height. Scrolling should
+// be disabled. We will enable scrolling where we need it.
+html, body
+{
+  height: 100vh;
+  overflow: hidden;
+}
+
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

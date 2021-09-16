@@ -1,0 +1,16 @@
+<!--
+  This page contains some Angular Material components. Learn more
+  about them at https://material.angular.io/components/categories.
+-->
+<mat-toolbar color="primary">
+  <button mat-icon-button aria-label="Main navigation" [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <a routerLink="" mat-menu-item>Home</a>
+    <a routerLink="grid" mat-menu-item>Grid</a>
+  </mat-menu>
+  <span>Angular Material Introduction</span>
+</mat-toolbar>
+
+<router-outlet></router-outlet>

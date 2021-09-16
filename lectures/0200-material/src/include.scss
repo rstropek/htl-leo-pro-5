@@ -1,0 +1,27 @@
+// This file contains variables that we will need in many different SCSS
+// files all across our app. Therefore, we put the variables in a separate file
+// so we can import it whereever we need the variables.
+
+// We import Material theming. See also
+// https://material.angular.io/guide/theming#defining-a-theme
+@use '~@angular/material' as mat;
+@import '~@angular/material/theming';
+
+// Define a palette for our app. We need to set main colors for that.
+// Read more at https://material.angular.io/guide/theming#defining-a-theme.
+// Quite helpful is also the article https://tomastrajan.medium.com/the-complete-guide-to-angular-material-themes-4d165a9d24d1.
+
+// You can find a list of all palettes at https://material.io/archive/guidelines/style/color.html#color-color-palette.
+
+// If you are interested in all the details about the Material color system,
+// read https://material.io/design/color/the-color-system.html#color-usage-and-palettes.
+
+$my-primary: mat.define-palette(mat.$indigo-palette, 500);
+$my-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The "warn" palette is optional and defaults to red if not specified.
+$my-warn: mat.define-palette(mat.$red-palette);
+
+// Our app has a global toolbar at the top of the screen. We will need that height
+// at many different locations in our app. So we define a SCSS variable for it.
+$global-header-height: 56px;
