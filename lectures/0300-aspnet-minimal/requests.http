@@ -1,0 +1,31 @@
+GET https://localhost:7186/
+
+###
+GET https://localhost:7186/hello
+
+###
+GET https://localhost:7186/todos
+
+###
+POST https://localhost:7186/todos
+Content-Type: application/json
+
+{
+    "title": "Demo",
+    "isComplete": false
+}
+
+###
+GET https://localhost:7186/todos/complete
+
+###
+GET https://localhost:7186/todos/incomplete
+
+###
+GET https://localhost:7186/todos/1
+
+###
+PUT https://localhost:7186/todos/3/mark-complete
+
+###
+DELETE https://localhost:7186/todos/delete-all
