@@ -1,0 +1,16 @@
+POST https://localhost:7242/api/evaluate
+Content-Type: application/json
+
+{ "expression": "1+2+3" }
+
+###
+POST https://localhost:7242/api/variables
+Content-Type: application/json
+
+{ "name": "x", "value": 4 }
+
+###
+POST https://localhost:7242/api/evaluate
+Content-Type: application/json
+
+{ "expression": "1+2+x+3" }
