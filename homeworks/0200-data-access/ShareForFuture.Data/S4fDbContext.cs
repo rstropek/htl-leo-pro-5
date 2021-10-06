@@ -12,6 +12,15 @@ public class S4fDbContext : DbContext
     public DbSet<User> Users => Set<User>();
     public DbSet<UserGroup> UserGroups => Set<UserGroup>();
     public DbSet<Identity> Identities => Set<Identity>();
+    public DbSet<Offering> Offerings => Set<Offering>();
+    public DbSet<DeviceImage> DeviceImages => Set<DeviceImage>();
+    public DbSet<DeviceCategory> DeviceCategories => Set<DeviceCategory>();
+    public DbSet<DeviceSubCategory> DeviceSubCategories => Set<DeviceSubCategory>();
+    public DbSet<OfferingTag> OfferingTags => Set<OfferingTag>();
+    public DbSet<UnavailabilityPeriod> UnavailabilityPeriods => Set<UnavailabilityPeriod>();
+    public DbSet<Sharing> Sharings => Set<Sharing>();
+    public DbSet<Complaint> Complaints => Set<Complaint>();
+    public DbSet<ComplaintNote> ComplaintNotes => Set<ComplaintNote>();
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -19,7 +28,7 @@ public class S4fDbContext : DbContext
     }
 }
 
-public class BloggingContextFactory : IDesignTimeDbContextFactory<S4fDbContext>
+public class S4fDbContextFactory : IDesignTimeDbContextFactory<S4fDbContext>
 {
     public S4fDbContext CreateDbContext(string[]? args = null)
     {

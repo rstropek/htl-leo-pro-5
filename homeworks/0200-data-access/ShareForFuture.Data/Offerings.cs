@@ -72,8 +72,8 @@ public class OfferingEntityTypeConfiguration : IEntityTypeConfiguration<Offering
         // Requirement: Users offering devices can assign 0..many tags to each device.
         builder.HasMany(o => o.Tags).WithMany(t => t.Offerings).UsingEntity(
             "OfferingsTags",
-            j => j.HasOne(typeof(OfferingTag)).WithMany().OnDelete(DeleteBehavior.ClientSetNull),
-            j => j.HasOne(typeof(Offering)).WithMany().OnDelete(DeleteBehavior.ClientSetNull));
+            j => j.HasOne(typeof(OfferingTag)).WithMany().OnDelete(DeleteBehavior.Restrict),
+            j => j.HasOne(typeof(Offering)).WithMany().OnDelete(DeleteBehavior.Cascade));
 
         // Requirement: Users can store periods of time through which a device will not be available.
         builder.HasMany(o => o.UnavailabilityPeriods).WithOne()

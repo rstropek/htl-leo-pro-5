@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShareForFuture", "ShareForF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShareForFuture.Data", "..\ShareForFuture.Data\ShareForFuture.Data.csproj", "{FE51696C-084A-498B-A359-3C64805013A0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShareForFuture.Data.Tests", "..\ShareForFuture.Data.Tests\ShareForFuture.Data.Tests.csproj", "{DF9F2C1F-2E5A-47C2-BEE0-2C9B3C9CCBBE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{FE51696C-084A-498B-A359-3C64805013A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE51696C-084A-498B-A359-3C64805013A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE51696C-084A-498B-A359-3C64805013A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF9F2C1F-2E5A-47C2-BEE0-2C9B3C9CCBBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF9F2C1F-2E5A-47C2-BEE0-2C9B3C9CCBBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF9F2C1F-2E5A-47C2-BEE0-2C9B3C9CCBBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF9F2C1F-2E5A-47C2-BEE0-2C9B3C9CCBBE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
