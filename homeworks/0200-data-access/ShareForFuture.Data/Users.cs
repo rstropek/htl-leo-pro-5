@@ -1,4 +1,4 @@
-﻿namespace ShareForFuture;
+﻿namespace ShareForFuture.Data;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;

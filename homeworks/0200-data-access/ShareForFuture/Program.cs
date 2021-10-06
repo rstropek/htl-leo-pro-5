@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using ShareForFuture;
+using ShareForFuture.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
