@@ -113,8 +113,6 @@ namespace ShareForFuture.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Complaints", x => x.Id);
-                    table.CheckConstraint("CK_Complaints_DoneAfterAssigned", "[DoneTimestamp] IS NULL OR [AssignedToId] IS NOT NULL");
-                    table.CheckConstraint("CK_Complaints_DoneAfterCreated", "[DoneTimestamp] IS NULL \r\n                OR [DoneTimestamp] > [DoneTimestamp]");
                     table.ForeignKey(
                         name: "FK_Complaints_Users_AssignedToId",
                         column: x => x.AssignedToId,

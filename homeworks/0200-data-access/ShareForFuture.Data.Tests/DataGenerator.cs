@@ -70,4 +70,14 @@ internal static class DataGenerator
             Until = DateTime.Now.AddDays(3)
         };
     }
+
+    public static Complaint CreateComplaint()
+    {
+        return new Complaint
+        {
+            Complainer = CreateUser(),
+            Complainee = CreateUser(email: "complainee@foobar.com", identities: false),
+            AssignedTo = CreateUser(email: "employee@foobar.com", identities: false),
+        };
+    }
 }

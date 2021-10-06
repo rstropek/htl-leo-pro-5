@@ -46,15 +46,8 @@ public class ComplaintEntityTypeConfiguration : IEntityTypeConfiguration<Complai
             .HasForeignKey(c => c.AssignedToId).OnDelete(DeleteBehavior.Restrict)
             .IsRequired(false);
 
-        builder.HasCheckConstraint("DoneAfterAssigned",
-            @$"[{nameof(Complaint.DoneTimestamp)}] IS NULL OR [{nameof(Complaint.AssignedToId)}] IS NOT NULL");
-
         // Requirement: S4F wants to be able to generate statics about the duration of complaints.
         builder.Property(c => c.CreatedTimestamp).HasDefaultValueSql("GETDATE()");
-
-        builder.HasCheckConstraint("DoneAfterCreated",
-            @$"[{nameof(Complaint.DoneTimestamp)}] IS NULL 
-                OR [{nameof(Complaint.DoneTimestamp)}] > [{nameof(Complaint.DoneTimestamp)}]");
     }
 }
 

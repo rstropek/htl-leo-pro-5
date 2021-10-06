@@ -12,7 +12,7 @@ using ShareForFuture.Data;
 namespace ShareForFuture.Data.Migrations
 {
     [DbContext(typeof(S4fDbContext))]
-    [Migration("20211006112641_Init")]
+    [Migration("20211006124319_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -73,10 +73,6 @@ namespace ShareForFuture.Data.Migrations
                     b.HasIndex("ComplainerId");
 
                     b.ToTable("Complaints");
-
-                    b.HasCheckConstraint("DoneAfterAssigned", "[DoneTimestamp] IS NULL OR [AssignedToId] IS NOT NULL");
-
-                    b.HasCheckConstraint("DoneAfterCreated", "[DoneTimestamp] IS NULL \r\n                OR [DoneTimestamp] > [DoneTimestamp]");
                 });
 
             modelBuilder.Entity("ShareForFuture.Data.ComplaintNote", b =>

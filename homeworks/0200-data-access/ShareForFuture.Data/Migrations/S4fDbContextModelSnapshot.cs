@@ -71,10 +71,6 @@ namespace ShareForFuture.Data.Migrations
                     b.HasIndex("ComplainerId");
 
                     b.ToTable("Complaints");
-
-                    b.HasCheckConstraint("DoneAfterAssigned", "[DoneTimestamp] IS NULL OR [AssignedToId] IS NOT NULL");
-
-                    b.HasCheckConstraint("DoneAfterCreated", "[DoneTimestamp] IS NULL \r\n                OR [DoneTimestamp] > [DoneTimestamp]");
                 });
 
             modelBuilder.Entity("ShareForFuture.Data.ComplaintNote", b =>
