@@ -46,6 +46,8 @@ public class User
     public List<Complaint> AssignedComplaints { get; set; } = new();
 }
 
+// Read more about grouping configurations and fluent API at
+// https://docs.microsoft.com/en-us/ef/core/modeling/#grouping-configuration
 public class UserEntityTypeConfiguration : IEntityTypeConfiguration<User>
 {
     public void Configure(EntityTypeBuilder<User> builder)
