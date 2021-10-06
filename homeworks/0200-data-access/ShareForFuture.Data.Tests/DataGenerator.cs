@@ -2,7 +2,7 @@
 
 internal static class DataGenerator
 {
-    public static User CreateUser(bool withGroup = false)
+    public static User CreateUser(bool withGroup = false, string? email = null, bool identities = true)
     {
         return new User
         {
@@ -13,9 +13,9 @@ internal static class DataGenerator
             ZipCode = "9999",
             Country = "AT",
             ContactPhone = "+4312345678",
-            ContactEmail = "foo@bar.com",
+            ContactEmail = email ?? "foo@bar.com",
             UserGroupId = withGroup ? 1 : null,
-            Identities = new List<Identity>
+            Identities = identities ? new List<Identity>
             {
                 new()
                 {
@@ -27,7 +27,7 @@ internal static class DataGenerator
                     Provider = IdentityProvider.Microsoft,
                     SubjectId = "foobar@google"
                 },
-            },
+            } : new List<Identity>(),
         };
     }
 
@@ -60,12 +60,14 @@ internal static class DataGenerator
         };
     }
 
-    //public static Offering CreateSharing()
-    //{
-    //    return new Sharing
-    //    {
-    //        Offering = CreateOffering(),
-
-    //    };
-    //}
+    public static Sharing CreateSharing()
+    {
+        return new Sharing
+        {
+            Offering = CreateOffering(),
+            Borrower = CreateUser(email: "borrower@foobar.com", identities: false),
+            From = DateTime.Now.AddDays(1),
+            Until = DateTime.Now.AddDays(3)
+        };
+    }
 }

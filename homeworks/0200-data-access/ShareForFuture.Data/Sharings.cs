@@ -66,28 +66,5 @@ public class SharingEntityTypeConfiguration : IEntityTypeConfiguration<Sharing>
             $"[{nameof(Sharing.Until)}] > [{nameof(Sharing.From)}]");
 
         // Note: AcceptDeclineMessage does not have a max. length; this is by design.
-
-        builder.HasCheckConstraint("ActivationTimestampOnlyWhenAccepted",
-            $"[{nameof(Sharing.ActivationTimestamp)}] IS NULL OR [{nameof(Sharing.LenderHasAccepted)}] = 1");
-
-        builder.HasCheckConstraint("MessageOnlyAfterAcceptDecline",
-            $"[{nameof(Sharing.AcceptDeclineMessage)}] IS NULL OR [{nameof(Sharing.LenderHasAccepted)}] IS NOT NULL");
-
-        builder.HasCheckConstraint("DoneAfterActivation",
-            @$"[{nameof(Sharing.DoneTimestamp)}] IS NULL OR 
-                [{nameof(Sharing.DoneTimestamp)}] > [{nameof(Sharing.ActivationTimestamp)}]");
-
-        builder.HasCheckConstraint("BorrowerRatingAfterDone",
-            @$"[{nameof(Sharing.BorrowerRating)}] IS NULL OR [{nameof(Sharing.DoneTimestamp)}] IS NOT NULL");
-        builder.HasCheckConstraint("BorrowerRatingNoteAfterDone",
-            @$"[{nameof(Sharing.BorrowerRatingNote)}] IS NULL OR [{nameof(Sharing.DoneTimestamp)}] IS NOT NULL");
-        builder.HasCheckConstraint("LenderRatingAfterDone",
-            @$"[{nameof(Sharing.LenderRating)}] IS NULL OR [{nameof(Sharing.DoneTimestamp)}] IS NOT NULL");
-        builder.HasCheckConstraint("LenderRatingNoteAfterDone",
-            @$"[{nameof(Sharing.LenderRatingNote)}] IS NULL OR [{nameof(Sharing.DoneTimestamp)}] IS NOT NULL");
-        builder.HasCheckConstraint("DeviceRatingAfterDone",
-            @$"[{nameof(Sharing.DeviceRating)}] IS NULL OR [{nameof(Sharing.DoneTimestamp)}] IS NOT NULL");
-        builder.HasCheckConstraint("DeviceRatingNoteAfterDone",
-            @$"[{nameof(Sharing.DeviceRatingNote)}] IS NULL OR [{nameof(Sharing.DoneTimestamp)}] IS NOT NULL");
     }
 }
