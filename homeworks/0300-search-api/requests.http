@@ -1,0 +1,7 @@
+POST https://localhost:7070/fill
+
+###
+GET https://localhost:7070/single-word?filter=chair
+
+###
+GET https://localhost:7070/multi-word?filter=chair,plastic
