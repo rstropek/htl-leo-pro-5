@@ -2,8 +2,6 @@
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.Extensions.Configuration;
 using System.Reflection;
 
@@ -44,17 +42,3 @@ public class S4fDbContextFactory : IDesignTimeDbContextFactory<S4fDbContext>
     }
 }
 
-[DbContext(typeof(S4fDbContext))]
-[Migration("20211014_CustomFilterTagsType")]
-public class CustomFilterTagsTypeMigration : Migration
-{
-    protected override void Up(MigrationBuilder migrationBuilder)
-    {
-        migrationBuilder.Sql("CREATE TYPE FilterTags AS TABLE ( Filter NVARCHAR(MAX) )");
-    }
-
-    protected override void Down(MigrationBuilder migrationBuilder)
-    {
-        migrationBuilder.Sql("DROP TYPE FilterTags");
-    }
-}

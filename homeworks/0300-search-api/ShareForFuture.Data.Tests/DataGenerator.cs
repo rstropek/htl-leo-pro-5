@@ -60,6 +60,80 @@ internal static class DataGenerator
         };
     }
 
+    public static IEnumerable<Offering> CreateSearchOffering()
+    {
+        var u = CreateUser();
+        return new Offering[]
+        {
+            new()
+            {
+                User = u,
+                Title = "Drilling machine",
+                Description = "Makita drilling machine, great for concrete walls",
+                Condition = DeviceCondition.Used,
+                LastSuccessfullAvailabilityVerification = DateTime.Now,
+                SubCategory = new()
+                {
+                    Title = "Foo",
+                    Category = new()
+                    {
+                        Title = "Bar"
+                    }
+                },
+                Tags = new List<OfferingTag>
+                {
+                    new() { Tag = "Tool" },
+                    new() { Tag = "Drilling" },
+                    new() { Tag = "Makita" },
+                },
+            },
+            new()
+            {
+                User = u,
+                Title = "Bosch driller",
+                Description = "Drilling machine from Bosch, good for light home improvement projects",
+                Condition = DeviceCondition.Used,
+                LastSuccessfullAvailabilityVerification = DateTime.Now,
+                SubCategory = new()
+                {
+                    Title = "Foo",
+                    Category = new()
+                    {
+                        Title = "Bar"
+                    }
+                },
+                Tags = new List<OfferingTag>
+                {
+                    new() { Tag = "Machine" },
+                    new() { Tag = "Bosch" },
+                    new() { Tag = "Home Improvement" },
+                },
+            },
+            new()
+            {
+                User = u,
+                Title = "Beamer",
+                Description = "Full-HD beamer for watching TV",
+                Condition = DeviceCondition.Used,
+                LastSuccessfullAvailabilityVerification = DateTime.Now,
+                SubCategory = new()
+                {
+                    Title = "Foo",
+                    Category = new()
+                    {
+                        Title = "Bar"
+                    }
+                },
+                Tags = new List<OfferingTag>
+                {
+                    new() { Tag = "TV" },
+                    new() { Tag = "Beamer" },
+                    new() { Tag = "Home Cinema" },
+                },
+            },
+        };
+    }
+
     public static Sharing CreateSharing()
     {
         return new Sharing
