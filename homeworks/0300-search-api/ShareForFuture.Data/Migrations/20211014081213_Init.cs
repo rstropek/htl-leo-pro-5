@@ -23,6 +23,18 @@ namespace ShareForFuture.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "FilteredOffers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                });
+
+            migrationBuilder.CreateTable(
                 name: "OfferingTags",
                 columns: table => new
                 {
@@ -431,6 +443,9 @@ namespace ShareForFuture.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "DeviceImages");
+
+            migrationBuilder.DropTable(
+                name: "FilteredOffers");
 
             migrationBuilder.DropTable(
                 name: "Identities");

@@ -10,7 +10,7 @@ public class DatabaseFixture : IDisposable
         Context = factory.CreateDbContext();
 
         Context.Database.EnsureDeleted();
-        Context.Database.EnsureCreated();
+        Context.Database.Migrate();
     }
 
     public void Dispose()

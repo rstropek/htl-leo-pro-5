@@ -12,14 +12,14 @@ using ShareForFuture.Data;
 namespace ShareForFuture.Data.Migrations
 {
     [DbContext(typeof(S4fDbContext))]
-    [Migration("20211006124319_Init")]
-    partial class Init
+    [Migration("20211014081229_CreateType")]
+    partial class CreateType
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.0-rc.1.21452.10")
+                .HasAnnotation("ProductVersion", "6.0.0-rc.2.21480.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -238,6 +238,22 @@ namespace ShareForFuture.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Offerings");
+                });
+
+            modelBuilder.Entity("ShareForFuture.Data.OfferingSummary", b =>
+                {
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.ToTable("FilteredOffers");
                 });
 
             modelBuilder.Entity("ShareForFuture.Data.OfferingTag", b =>
