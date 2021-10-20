@@ -80,6 +80,8 @@ try
 
     app.MapPost("/minimal-customers", (Serilog.ILogger logger, CustomerDtoClass customer) =>
     {
+        // Manually validate data annotations. Unfortunately, this does not
+        // work with records currently. See also https://github.com/dotnet/runtime/issues/47602.
         var context = new ValidationContext(customer, null, null);
         var results = new List<ValidationResult>();
         if (!Validator.TryValidateObject(customer, context, results, true))
