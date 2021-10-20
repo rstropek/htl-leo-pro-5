@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Serilog.AspNetCore" Version="4.1.1-dev-00229" />
+        <PackageReference Include="SerilogTimings" Version="2.3.1-dev-00010" />
+
+        <!-- 
+            Seq is a nice option for easy-to-use logging in small to medium projects.
+            For details see https://docs.datalust.co/docs. For install instructions see
+            https://docs.datalust.co/docs/getting-started.
+        
+            In real-world projects, consider more advanced monitoring platforms like
+            https://docs.microsoft.com/en-us/azure/azure-monitor/app/asp-net-core or
+            https://github.com/prometheus-net/prometheus-net (particularly interesting with K8s).
+        -->
+        <PackageReference Include="Serilog.Sinks.Seq" Version="5.0.1" />
+    </ItemGroup>
+
+</Project>

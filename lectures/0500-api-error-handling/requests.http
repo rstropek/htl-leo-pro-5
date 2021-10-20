@@ -1,0 +1,39 @@
+POST https://localhost:7096/logDemo/customers
+Content-Type: application/json
+
+{
+    "name": "FooBar",
+    "age": 42
+}
+
+###
+POST https://localhost:7096/logDemo/customers
+Content-Type: application/json
+
+{
+    "name": "FooBar",
+    "age": -1
+}
+
+###
+POST https://localhost:7096/logDemo/customers
+Content-Type: application/json
+
+{
+    "age": 42
+}
+
+
+###
+POST https://localhost:7096/logDemo/customers
+Content-Type: application/json
+
+{ age: 42 }
+
+###
+POST https://localhost:7096/minimal-customers
+Content-Type: application/json
+
+{
+    "age": 42
+}
