@@ -45,11 +45,13 @@ Output:
 
 Input:
 
-* Campaign (Dropdown, not just a text field)
-* Town name
-* Street name
-* House number
-* Family name
+* (Mandatory) Campaign (Dropdown, not just a text field)
+* (Mandatory) Town name (max. length 150 chars)
+* (Mandatory Street name (max. length 150 chars)
+* (Mandatory) House number
+  * Starts with a number >= 1
+  * Can optionally contain a single letter after the number
+* (Optional) Family name (max. length 150 chars)
 * Flag whether someone was met or nobody was at home
 
 ### Enter Successful Re-visit
