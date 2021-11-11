@@ -1,0 +1,29 @@
+label {
+    display: inline-block;
+    min-width: 175px;
+}
+
+button.refresh {
+    margin-left: 175px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th {
+    min-width: 100px;
+    text-align: center;
+    background-color: lightgray;
+    border: 0;
+    padding: 5px;
+}
+
+td {
+    text-align: center;
+    padding: 5px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}

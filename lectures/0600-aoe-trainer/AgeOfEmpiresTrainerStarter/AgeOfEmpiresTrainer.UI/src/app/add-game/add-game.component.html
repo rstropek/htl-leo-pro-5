@@ -1,0 +1,57 @@
+<h2>Add Game</h2>
+
+<form>
+    <div>
+        <label>Game Status:</label>
+        <select name="gameStatus">
+            <option value="0">Lose</option>
+            <option value="1">Win</option>
+        </select>
+    </div>
+    <div>
+        <label>Civilization Level:</label>
+        <input type="number" min="1" max="4"
+            value="1" required name="civilizationLevel" />
+    </div>
+    <div>
+        <label>Notes:</label>
+        <input type="text" name="notes" />
+    </div>
+
+    <h3>AI Player</h3>
+
+    <button>Add Player</button>
+
+    <div *ngFor="let ai of aiPlayers; index as i" class="ai">
+        <h4>
+            AI Player {{ i + 1 }}
+            <button>❌</button>
+        </h4>
+        <div>
+            <label class="ai">Civilization:</label>
+            <select name="civilization{{i}}">
+                <option value="0">Rus</option>
+                <option value="1">Holy Roman Empire</option>
+                <option value="2">Chinese</option>
+                <option value="3">English</option>
+                <option value="4">Delhi Sultanate</option>
+                <option value="5">Mongols</option>
+                <option value="6">Abbasid Dynasty</option>
+                <option value="7">French</option>
+            </select>
+        </div>
+        <div>
+            <label class="ai">Level:</label>
+            <select name="level{{i}}">
+                <option value="0">Easy</option>
+                <option value="1">Intermediate</option>
+                <option value="2">Hard</option>
+            </select>
+        </div>    
+        <div>
+            <label class="ai">Defeated:</label>
+            <input type="checkbox" name="defeated{{i}}" />
+        </div>    
+    </div>
+    <button class="save">Save</button>
+</form>

@@ -1,0 +1,20 @@
+label {
+  display: inline-block;
+  min-width: 175px;
+}
+
+button.save {
+  margin-top: 25px;
+}
+
+div.ai {
+  margin-left: 75px;
+}
+
+h4 {
+  margin-bottom: 0;
+}
+
+label.ai {
+  min-width: 100px;
+}

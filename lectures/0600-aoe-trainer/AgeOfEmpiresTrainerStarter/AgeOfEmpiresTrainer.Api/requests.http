@@ -1,0 +1,80 @@
+@host = https://localhost:7122
+
+###
+POST {{host}}/api/gameResults
+Content-Type: application/json
+
+{
+    "numberOfAIPlayers": 2,
+    "gameStatus": 1,
+    "civilizationLevel": 4,
+    "notes": "Must prioritize food at game start",
+    "aiPlayers": [
+        {
+            "civilization": 3,
+            "difficultyLevel": 0,
+            "defeated": true
+        },
+        {
+            "civilization": 0,
+            "difficultyLevel": 0,
+            "defeated": true
+        }
+    ]
+}
+
+###
+POST {{host}}/api/gameResults
+Content-Type: application/json
+
+{
+    "numberOfAIPlayers": 1,
+    "gameStatus": 0,
+    "civilizationLevel": 3,
+    "notes": "Must build army earlier",
+    "aiPlayers": [
+        {
+            "civilization": 5,
+            "difficultyLevel": 2,
+            "defeated": false
+        }
+    ]
+}
+
+
+###
+POST {{host}}/api/gameResults
+Content-Type: application/json
+
+{
+    "numberOfAIPlayers": 1,
+    "gameStatus": 0,
+    "civilizationLevel": 3,
+    "notes": "No chance 😖",
+    "aiPlayers": [
+        {
+            "civilization": 6,
+            "difficultyLevel": 3,
+            "defeated": false
+        }
+    ]
+}
+
+###
+GET {{host}}/api/gameResults
+Accept: application/json
+
+###
+GET {{host}}/api/gameResults?numberOfAIPlayers=3
+Accept: application/json
+
+###
+GET {{host}}/api/gameResults?civilization=1
+Accept: application/json
+
+###
+GET {{host}}/api/gameResults?numberOfAIPlayers=3&gameStatus=1
+Accept: application/json
+
+###
+DELETE {{host}}/api/gameResults/4
