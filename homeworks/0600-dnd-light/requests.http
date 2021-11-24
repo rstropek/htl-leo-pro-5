@@ -1,0 +1,144 @@
+# Samples requests for DnD light
+
+@host = https://localhost:7243
+
+###
+# Get all rooms
+GET {{host}}/api/rooms
+Accept: application/json
+
+###
+# Create a room
+POST {{host}}/api/rooms
+Content-Type: application/json
+Accept: application/json
+
+{ "description": "scanty, ragged room covered in moss, cobwebs and dead vermin" }
+
+###
+POST {{host}}/api/rooms
+Content-Type: application/json
+Accept: application/json
+
+{ "description": "massive, deteriorated room with bat droppings on the floor and a skeleton holding a torch" }
+
+###
+GET {{host}}/api/rooms/1
+Accept: application/json
+
+###
+PUT {{host}}/api/rooms/1
+Content-Type: application/json
+Accept: application/json
+
+{
+    "description": "grand, dark hall in which you can barely see",
+    "doors": [
+        {
+            "linkedRoomId": 2,
+            "description": "heavy, wooden door with a solid metal lock",
+            "initiallyLocked": true,
+            "requiredItemToUnlock": 2
+        }
+    ],
+    "items": [
+        {
+            "description": "poisonous dagger with snake venom",
+            "itemType": 6
+        },
+        {
+            "description": "magic, iron-rank healing potion",
+            "itemType": 7
+        }
+    ],
+    "monsters": [
+        {
+            "description": "rat king, a human-scale rat creature packed with enormous muscles",
+            "attacksOnEntry": true,
+            "lifePower": 6,
+            "attackStrength": 8,
+            "armorStrength": 1
+        }
+    ]
+}
+
+
+###
+PUT {{host}}/api/rooms/2
+Content-Type: application/json
+Accept: application/json
+
+{
+    "description": "massive, deteriorated room with bat droppings on the floor and a skeleton holding a torch",
+    "doors": [],
+    "items": [
+        {
+            "description": "magic cloak offering limited shielding against physical attacks",
+            "itemType": 7
+        },
+        {
+            "description": "defense strengths spell book",
+            "itemType": 8
+        }
+    ],
+    "monsters": [
+        {
+            "description": "annoying but harmless spider",
+            "attacksOnEntry": false,
+            "lifePower": 1,
+            "attackStrength": 1,
+            "armorStrength": 1
+        }
+    ]
+}
+
+###
+# Delete a room
+DELETE {{host}}/api/rooms/2
+
+###
+# Get game setups
+GET {{host}}/api/gameSetup
+Accept: application/json
+
+###
+# Get game setups
+GET {{host}}/api/gameSetup?descriptionFilter=cheesy
+Accept: application/json
+
+###
+# Add game setup
+POST {{host}}/api/gameSetup
+Content-Type: application/json
+Accept: application/json
+
+{
+    "description": "Easy-peasy",
+    "startingRoomId": 5,
+    "initialLifePower": 8,
+    "initialAttackStrength": 8,
+    "initialArmorStrength": 8
+}
+
+###
+# Get single game setup
+GET {{host}}/api/gameSetup/4
+Accept: application/json
+
+###
+# Update game setup
+PUT {{host}}/api/gameSetup/4
+Content-Type: application/json
+Accept: application/json
+
+{
+    "description": "Easy-peasy-cheesy",
+    "startingRoomId": 5,
+    "initialLifePower": 10,
+    "initialAttackStrength": 10,
+    "initialArmorStrength": 10
+}
+
+###
+# Delete game setup
+DELETE {{host}}/api/gameSetup/4
