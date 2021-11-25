@@ -1,0 +1,110 @@
+<h2>Room Details</h2>
+
+<div *ngIf="room">
+    <form>
+        <h3>Description</h3>
+
+        <!-- Note: Use `textarea` for large text fields -->
+        <textarea name="description"></textarea>
+
+        <h3>Doors</h3>
+        <button>Add door</button>
+        <div *ngFor="let door of room.doors; index as i" class="indent">
+            <h4>Door &lt;add door number here&gt; <button>❌</button></h4>
+            <div>
+                <label>Description:</label>
+                <!-- Note: Every form elements needs a UNIQUE name, so use index in name! -->
+                <input class="stretch" type="text" name="doorDescription{{i}}" />
+            </div>
+            <div>
+                <label>Linked room:</label>
+                <select class="stretch" name="linkedRoom{{i}}">
+                    <!-- Note: Use `ngValue` instead of `value` to get a numeric value in data binding -->
+                    <option></option>
+                </select>
+            </div>
+            <div>
+                <label>Initially locked:</label>
+                <input type="checkbox" name="initiallyLocked{{i}}" />
+            </div>
+            <div>
+                <label>Required item to unlock:</label>
+                <select name="requiredItemToUnlock{{i}}" >
+                    <!-- Note: Use `ngValue` instead of `value` to get a numeric value in data binding -->
+                    <option [ngValue]="undefined"></option>
+                    <option [ngValue]="0">Iron key</option>
+                    <option [ngValue]="1">Bronze key</option>
+                    <option [ngValue]="2">Silver key</option>
+                    <option [ngValue]="3">Gold key</option>
+                    <option [ngValue]="4">Diamond key</option>
+                    <option [ngValue]="5">Armor</option>
+                    <option [ngValue]="6">Sword</option>
+                    <option [ngValue]="7">Healing Potion</option>
+                    <option [ngValue]="8">Magic Spell Book</option>
+                </select>
+            </div>
+        </div>
+        
+        <h3>Items</h3>
+        <button>Add item</button>
+        <div *ngFor="let item of room.items; index as i" class="indent">
+            <h4>Item &lt;add item number here&gt; <button>❌</button></h4>
+            <div>
+                <label>Description:</label>
+                <input class="stretch" type="text" name="itemDescription{{i}}" />
+            </div>
+            <div>
+                <label>Item type:</label>
+                <select name="itemType{{i}}" >
+                    <option [ngValue]="0">Iron key</option>
+                    <option [ngValue]="1">Bronze key</option>
+                    <option [ngValue]="2">Silver key</option>
+                    <option [ngValue]="3">Gold key</option>
+                    <option [ngValue]="4">Diamond key</option>
+                    <option [ngValue]="5">Armor</option>
+                    <option [ngValue]="6">Sword</option>
+                    <option [ngValue]="7">Healing Potion</option>
+                    <option [ngValue]="8">Magic Spell Book</option>
+                </select>
+            </div>
+        </div>
+        
+        <h3>Monsters</h3>
+        <button>Add monster</button>
+        <div *ngFor="let monster of room.monsters; index as i" class="indent">
+            <h4>Monster &lt;add monster number here&gt; <button>❌</button></h4>
+            <div>
+                <label>Description:</label>
+                <input class="stretch" type="text" name="monsterDescription{{i}}" />
+            </div>
+            <div>
+                <label>Attacks on entry:</label>
+                <input type="checkbox" name="attacksOnEntry{{i}}" />
+            </div>
+            <div>
+                <label>Life power:</label>
+                    <!-- Note: Use type `number` to get a numeric value in data binding -->
+                    <input type="number" name="lifePower{{i}}" />
+            </div>
+            <div>
+                <label>Armor strength:</label>
+                <input type="number" name="armorStrength{{i}}" />
+            </div>
+            <div>
+                <label>Attack strength:</label>
+                <input type="number" name="attackStrength{{i}}" />
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<button class="save">Save</button>
+
+<h3>Form State (for debugging purposes)</h3>
+
+<!-- Note: Use `json` pipe to display form content as json. Helpful for debugging -->
+<pre>
+    {{ room | json }}
+</pre>
+

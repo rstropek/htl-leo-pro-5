@@ -11,23 +11,9 @@ import { RoomSummary } from '../model/models';
 })
 export class RoomListComponent implements OnInit {
 
-  rooms?: Observable<RoomSummary[]>;
-
   constructor(private apiClient: DndApiClientService, private router: Router) { }
 
   ngOnInit(): void {
-    this.refresh();
-  }
-
-  refresh() {
-    this.rooms = this.apiClient.getRooms();
-  }
-
-  deleteRoom(id: number) {
-    this.apiClient.deleteRoom(id).subscribe(() => this.refresh());
-  }
-
-  editRoom(id: number) {
-    this.router.navigate(['edit-room', id]);
+    throw new Error('Not implemented yet');
   }
 }

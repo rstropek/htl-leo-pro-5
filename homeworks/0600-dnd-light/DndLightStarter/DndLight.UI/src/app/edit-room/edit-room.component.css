@@ -1,0 +1,20 @@
+textarea {
+    width: 100%;
+}
+
+label {
+    margin-top: 10px;
+}
+
+.indent {
+    margin-left: 20px;
+}
+
+h4 {
+    margin-top: 35px;
+    margin-bottom: 0;
+}
+
+pre {
+    font-size: 8px;
+}

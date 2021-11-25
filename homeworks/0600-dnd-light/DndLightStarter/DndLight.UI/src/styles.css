@@ -1,0 +1,17 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 600px;
+}
+
+label {
+  display: inline-block;
+  min-width: 175px;
+}
+
+button.save {
+  margin-top: 25px;
+}
+
+.stretch {
+  width: 100%;
+}

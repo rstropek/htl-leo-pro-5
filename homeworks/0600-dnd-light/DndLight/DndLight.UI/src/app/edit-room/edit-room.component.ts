@@ -17,6 +17,7 @@ export class EditRoomComponent implements OnInit {
   rooms?: RoomSummary[];
 
   constructor(private apiClient: DndApiClientService, route: ActivatedRoute, private router: Router) {
+    // Note: This is how you can get a parameter from a route (in this case the room's id)
     route.paramMap.subscribe(p => this.id = parseInt(p.get('id') ?? ''));
   }
 
