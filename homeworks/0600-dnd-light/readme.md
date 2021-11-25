@@ -23,3 +23,7 @@ The database layer has already been implemented for you (see [starter solution](
 ## Exam Simulation
 
 If you manage to build a working version of the required web APIs within approx. 3 hours, you are well prepared for the next exam. In order to reach a positive grade, you should at least be able to build a working [`RoomsController`](DndLightStarter/DndLight.WebApi/RoomsController.cs) within 3 hours.
+
+## Done?
+
+Have you completed this exercise? **Compare your solution with the [sample solution](DndLight) and pay special attention to the comments in the sample solution!**. Then you can [continue with part 2...](readme-part-2.md)
