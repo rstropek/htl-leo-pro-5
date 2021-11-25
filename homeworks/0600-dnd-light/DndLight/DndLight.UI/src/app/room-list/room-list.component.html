@@ -1,0 +1,20 @@
+<h2>List of Rooms</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th class="center">ID</th>
+            <th>Description</th>
+            <th>Delete</th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let room of rooms | async">
+            <td class="center">{{ room.id }}</td>
+            <td>{{ room.description }}</td>
+            <td class="center"><button (click)="deleteRoom(room.id)">❌</button></td>
+            <td class="center"><button (click)="editRoom(room.id)">📝</button></td>
+        </tr>
+    </tbody>
+</table>

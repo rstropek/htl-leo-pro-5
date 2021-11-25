@@ -1,0 +1,39 @@
+<h2>Room Details</h2>
+
+<div *ngIf="room">
+    <h3>Description</h3>
+    <textarea name="description" [(ngModel)]="room.description"></textarea>
+
+    <h3>Doors</h3>
+    <div *ngFor="let door of room.doors; index as i">
+        <div>
+            <label>Description:</label>
+            <input class="stretch" type="text" name="door{{i}}" [(ngModel)]="door.description" />
+        </div>
+        <div>
+            <label>Linked room:</label>
+            <select class="stretch" [(ngModel)]="door.linkedRoomId" name="linkedRoom{{i}}">
+                <option *ngFor="let r of rooms | async" [ngValue]="r.id">{{ r.id }}: {{ r.description }}</option>
+            </select>
+        </div>
+        <div>
+            <label>Initially locked:</label>
+            <input type="checkbox" [(ngModel)]="door.initiallyLocked" name="initiallyLocked{{i}}" />
+        </div>
+        <div>
+            <label>Required item to unlock:</label>
+            <select>
+                <option [ngValue]="0">Iron key</option>
+                <option [ngValue]="1">Bronze key</option>
+                <option [ngValue]="2">Silver key</option>
+                <option [ngValue]="3">Gold key</option>
+                <option [ngValue]="4">Diamond key</option>
+                <option [ngValue]="5"></option>
+                <option [ngValue]="6"></option>
+                <option [ngValue]="7"></option>
+                <option [ngValue]="8"></option>
+            </select>
+        </div>
+    </div>
+
+</div>

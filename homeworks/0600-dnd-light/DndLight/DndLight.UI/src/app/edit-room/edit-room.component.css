@@ -1,0 +1,11 @@
+textarea {
+    width: 100%;
+}
+
+.stretch {
+    width: 100%;
+}
+
+label {
+    margin-top: 10px;
+}
