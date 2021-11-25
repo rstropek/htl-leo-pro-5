@@ -1,39 +1,110 @@
 <h2>Room Details</h2>
 
 <div *ngIf="room">
-    <h3>Description</h3>
-    <textarea name="description" [(ngModel)]="room.description"></textarea>
+    <form>
+        <h3>Description</h3>
 
-    <h3>Doors</h3>
-    <div *ngFor="let door of room.doors; index as i">
-        <div>
-            <label>Description:</label>
-            <input class="stretch" type="text" name="door{{i}}" [(ngModel)]="door.description" />
-        </div>
-        <div>
-            <label>Linked room:</label>
-            <select class="stretch" [(ngModel)]="door.linkedRoomId" name="linkedRoom{{i}}">
-                <option *ngFor="let r of rooms | async" [ngValue]="r.id">{{ r.id }}: {{ r.description }}</option>
-            </select>
-        </div>
-        <div>
-            <label>Initially locked:</label>
-            <input type="checkbox" [(ngModel)]="door.initiallyLocked" name="initiallyLocked{{i}}" />
-        </div>
-        <div>
-            <label>Required item to unlock:</label>
-            <select>
-                <option [ngValue]="0">Iron key</option>
-                <option [ngValue]="1">Bronze key</option>
-                <option [ngValue]="2">Silver key</option>
-                <option [ngValue]="3">Gold key</option>
-                <option [ngValue]="4">Diamond key</option>
-                <option [ngValue]="5"></option>
-                <option [ngValue]="6"></option>
-                <option [ngValue]="7"></option>
-                <option [ngValue]="8"></option>
-            </select>
-        </div>
-    </div>
+        <!-- Note: Use `textarea` for large text fields -->
+        <textarea name="description" [(ngModel)]="room.description"></textarea>
 
+        <h3>Doors</h3>
+        <button (click)="addDoor()">Add door</button>
+        <div *ngFor="let door of room.doors; index as i" class="indent">
+            <h4>Door {{ i + 1 }} <button (click)="deleteDoor(i)">❌</button></h4>
+            <div>
+                <label>Description:</label>
+                <!-- Note: Every form elements needs a UNIQUE name, so use index in name! -->
+                <input class="stretch" type="text" name="doorDescription{{i}}" [(ngModel)]="door.description" />
+            </div>
+            <div>
+                <label>Linked room:</label>
+                <select class="stretch" [(ngModel)]="door.linkedRoomId" name="linkedRoom{{i}}">
+                    <!-- Note: Use `ngValue` instead of `value` to get a numeric value in data binding -->
+                    <option *ngFor="let r of rooms" [ngValue]="r.id">{{ r.id }}: {{ r.description }}</option>
+                </select>
+            </div>
+            <div>
+                <label>Initially locked:</label>
+                <input type="checkbox" [(ngModel)]="door.initiallyLocked" name="initiallyLocked{{i}}" />
+            </div>
+            <div>
+                <label>Required item to unlock:</label>
+                <select  [(ngModel)]="door.requiredItemToUnlock" name="requiredItemToUnlock{{i}}" >
+                    <!-- Note: Use `ngValue` instead of `value` to get a numeric value in data binding -->
+                    <option [ngValue]="undefined"></option>
+                    <option [ngValue]="0">Iron key</option>
+                    <option [ngValue]="1">Bronze key</option>
+                    <option [ngValue]="2">Silver key</option>
+                    <option [ngValue]="3">Gold key</option>
+                    <option [ngValue]="4">Diamond key</option>
+                    <option [ngValue]="5">Armor</option>
+                    <option [ngValue]="6">Sword</option>
+                    <option [ngValue]="7">Healing Potion</option>
+                    <option [ngValue]="8">Magic Spell Book</option>
+                </select>
+            </div>
+        </div>
+        
+        <h3>Items</h3>
+        <button (click)="addItem()">Add item</button>
+        <div *ngFor="let item of room.items; index as i" class="indent">
+            <h4>Item {{ i + 1 }} <button (click)="deleteItem(i)">❌</button></h4>
+            <div>
+                <label>Description:</label>
+                <input class="stretch" type="text" name="itemDescription{{i}}" [(ngModel)]="item.description" />
+            </div>
+            <div>
+                <label>Item type:</label>
+                <select  [(ngModel)]="item.itemType" name="itemType{{i}}" >
+                    <option [ngValue]="0">Iron key</option>
+                    <option [ngValue]="1">Bronze key</option>
+                    <option [ngValue]="2">Silver key</option>
+                    <option [ngValue]="3">Gold key</option>
+                    <option [ngValue]="4">Diamond key</option>
+                    <option [ngValue]="5">Armor</option>
+                    <option [ngValue]="6">Sword</option>
+                    <option [ngValue]="7">Healing Potion</option>
+                    <option [ngValue]="8">Magic Spell Book</option>
+                </select>
+            </div>
+        </div>
+        
+        <h3>Monsters</h3>
+        <button (click)="addMonster()">Add monster</button>
+        <div *ngFor="let monster of room.monsters; index as i" class="indent">
+            <h4>Monster {{ i + 1 }} <button (click)="deleteMonster(i)">❌</button></h4>
+            <div>
+                <label>Description:</label>
+                <input class="stretch" type="text" name="monsterDescription{{i}}" [(ngModel)]="monster.description" />
+            </div>
+            <div>
+                <label>Attacks on entry:</label>
+                <input type="checkbox" [(ngModel)]="monster.attacksOnEntry" name="attacksOnEntry{{i}}" />
+            </div>
+            <div>
+                <label>Life power:</label>
+                    <!-- Note: Use type `number` to get a numeric value in data binding -->
+                    <input type="number" name="lifePower{{i}}" [(ngModel)]="monster.lifePower" />
+            </div>
+            <div>
+                <label>Armor strength:</label>
+                <input type="number" name="armorStrength{{i}}" [(ngModel)]="monster.armorStrength" />
+            </div>
+            <div>
+                <label>Attack strength:</label>
+                <input type="number" name="attackStrength{{i}}" [(ngModel)]="monster.attackStrength" />
+            </div>
+        </div>
+
+    </form>
 </div>
+
+<button class="save" (click)="save()">Save</button>
+
+<h3>Form State (for debugging purposes)</h3>
+
+<!-- Note: Use `json` pipe to display form content as json. Helpful for debugging -->
+<pre>
+    {{ room | json }}
+</pre>
+

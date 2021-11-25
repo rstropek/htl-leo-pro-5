@@ -11,3 +11,7 @@ label {
 button.save {
   margin-top: 25px;
 }
+
+.stretch {
+  width: 100%;
+}

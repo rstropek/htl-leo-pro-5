@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'room-list' },
   { path: 'room-list', component: RoomListComponent },
   { path: 'add-room', component: AddRoomComponent },
+  // Note: The route contains a parameter (`id`)
   { path: 'edit-room/:id', component: EditRoomComponent },
 ];
 

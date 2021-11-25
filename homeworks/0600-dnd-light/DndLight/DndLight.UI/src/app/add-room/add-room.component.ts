@@ -17,6 +17,7 @@ export class AddRoomComponent {
   constructor(private apiClient: DndApiClientService, private router: Router) { }
 
   save() {
+    // Note: Use `Router` to navigate to other component in code.
     this.apiClient.addRoom(this.room).subscribe(() => this.router.navigate(['room-list']));
   }
 }

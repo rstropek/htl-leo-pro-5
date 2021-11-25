@@ -5,5 +5,5 @@ export interface RoomDoorResult {
     linkedRoomId: number;
     description: string;
     initiallyLocked: boolean;
-    requiredItemToUnlock: ItemType;
+    requiredItemToUnlock?: ItemType;
 }
