@@ -1,0 +1,28 @@
+<h2>Quiz</h2>
+
+<p>
+    {{ question?.text }}
+</p>
+
+<ul *ngIf="question">
+    <li *ngFor="let o of question.options; index as i">
+        <input type="checkbox" [(ngModel)]="answers[i]" name="answer{{i}}" />{{ o.text }}
+    </li>
+</ul>
+
+<button (click)="check()" *ngIf="!answered">Check</button>
+
+<p *ngIf="correct !== undefined">
+    Your answer is {{ correct ? "correct!" : "wrong!" }}
+</p>
+
+<div *ngIf="answered">
+    <button (click)="loadRandom()">Next</button>
+
+    <p>
+        Number of questions: {{ numberOfQuestions }}<br/>
+        Number of correctly answered questions: {{ numberOfCorrectQuestions }}
+    </p>
+
+    <button (click)="finish()">Finish quiz</button>
+</div>

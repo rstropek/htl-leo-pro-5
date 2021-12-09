@@ -1,0 +1,34 @@
+<h2>Questions</h2>
+
+<h3>Filter</h3>
+<div>
+    <div>
+        <label>Question text:</label>
+        <input type="text" [(ngModel)]="textFilter" />
+    </div>
+
+    <div>
+        <button class="refresh" (click)="refresh()">Refresh</button>
+    </div>
+</div>
+
+<h3>Result</h3>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Text</th>
+            <th>Answer&nbsp;Options</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of questions | async">
+            <td>{{ row.id }}</td>
+            <td>{{ row.text }}</td>
+            <td>{{ row.numberOfOptions }}</td>
+            <td><button (click)="delete(row.id)">❌</button></td>
+        </tr>
+    </tbody>
+</table>

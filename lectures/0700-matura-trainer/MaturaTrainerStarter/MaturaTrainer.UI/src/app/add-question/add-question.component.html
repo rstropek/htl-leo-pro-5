@@ -1,0 +1,28 @@
+<h2>Add Question</h2>
+
+<form>
+    <div>
+        <label>Question Text:</label>
+        <textarea name="text"></textarea>
+    </div>
+
+    <h3>Answer Options</h3>
+
+    <button>Add Option</button>
+
+    <div *ngFor="let o of options; index as i" class="ai">
+        <h4>
+            Option {{ i + 1 }}
+            <button>❌</button>
+        </h4>
+        <div>
+            <label class="ai">Answer text:</label>
+            <input type="text" name="optionText{{i}}" />
+        </div>
+        <div>
+            <label class="ai">Is correct:</label>
+            <input type="checkbox" name="isCorrect{{i}}" />
+        </div>    
+    </div>
+    <button class="save">Save</button>
+</form>
