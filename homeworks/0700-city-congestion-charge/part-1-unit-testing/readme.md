@@ -16,9 +16,9 @@ The starter solution also already contains some unit tests (see [*TestChargeCalc
 
 ## Your Job
 
-1. Implement the method [`ChargeCalculator.CalculateFee`](CityCongestionCharge.Data/ChargeCalculator.cs)) based on the [business rules of CCC](../readme.md).
+1. Implement the method [`ChargeCalculator.CalculateFee`](CityCongestionCharge.Data/ChargeCalculator.cs) based on the [business rules of CCC](../readme.md).
 
-2. Complete [*TestChargeCalculator.cs*](CityCongestionCharge.Data.Tests/TestChargeCalculator.cs) and [*TestChargeCalculatorSamples.cs*](CityCongestionCharge.Data.Tests/TestChargeCalculatorSamples.cs) so that **all** nine test cases shown below are covered and run without error or warning.
+2. Complete [*TestChargeCalculator.cs*](CityCongestionCharge.Data.Tests/TestChargeCalculator.cs) and [*TestChargeCalculatorSamples.cs*](CityCongestionCharge.Data.Tests/TestChargeCalculatorSamples.cs) so that **all nine test cases** shown below are covered and run without error or warning.
 
 ## Test Cases for Fee Calculation
 
