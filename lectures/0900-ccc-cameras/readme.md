@@ -6,7 +6,7 @@ This exercise is part of the larger [*City Congestion Charge* (CCC) sample]([..]
 
 ## The Problem
 
-CCC consists of many traffic cameras distributed all over the city. Some of the cameras are mounted on city borders to recognize cars entering/leaving the city. Some of the cameras are mounted inside the city to detect vehicles driving inside of the city. The type of camera can be derived from a camera'S ID:
+CCC consists of many traffic cameras distributed all over the city. Some of the cameras are mounted on city borders to recognize cars entering/leaving the city. Some of the cameras are mounted inside the city to detect vehicles driving inside of the city. The type of camera can be derived from a camera'S ID (see also [`GetCameraType` method in *CameraDetectionValidator.cs*](starter-solution/CityCongestionCharge.Data/CameraDetectionValidator.cs)):
 
 * Cameras with IDs 0 to 199 detect cars when they **enter** the city.
 * Cameras with IDs 200 to 399 detect cars with they **leave** the city.
@@ -26,8 +26,10 @@ Additionally, license plate recognition is not perfect. Sometimes, the cameras d
 * Starts with one or two uppercase letters (e.g. *LL*)
 * Followed by a hyphen (minus sign; *-*)
 * Followed by two to four digits
-* Followed by one or two letters
+* Followed by one or two uppercase letters
 * In total, a license plate number must not be longer than 8 characters
+
+Therefore, the regular expression for a single license plate would be [`^[A-Z]{1,2}-\d{2,4}[A-Z]{1,2}$`](regexr.com/6dehg). You can use the regular expression to verify license plate ([`RegEx` class](https://docs.microsoft.com/en-us/dotnet/api/system.text.regularexpressions.regex)), but you do not need to.
 
 Invalid license plates have to lead to the error code *INVALID_LP*.
 
@@ -35,7 +37,7 @@ Invalid license plates have to lead to the error code *INVALID_LP*.
 
 You have a [*starter solution*](starter-solution) for this exercise. It contains data types suitable for the business logic defined above (see [*CameraDetection.cs*](starter-solution/CityCongestionCharge.Data/CameraDetection.cs)).
 
-The starter solution contains the stub of a validation function (see [*CameraDetectionValidator.cs*](starter-solution/CityCongestionCharge.Data/CameraDetectionValidator.cs)). Additionally, it contains a sample unit tests (see [*TestCameraDetectionValidator.cs*](starter-solution/CityCongestionCharge.Data.Tests/TestCameraDetectionValidator.cs)).
+The starter solution contains the stub of a validation function (see [*CameraDetectionValidator.cs*](starter-solution/CityCongestionCharge.Data/CameraDetectionValidator.cs)). Additionally, it contains sample unit tests (see [*TestCameraDetectionValidator.cs*](starter-solution/CityCongestionCharge.Data.Tests/TestCameraDetectionValidator.cs)).
 
 ## Your Job
 
@@ -43,7 +45,7 @@ The starter solution contains the stub of a validation function (see [*CameraDet
 
 2. Implement unit tests for all test cases defined below. Add your unit tests to [*TestCameraDetectionValidator.cs*](starter-solution/CityCongestionCharge.Data.Tests/TestCameraDetectionValidator.cs).
 
-3. Write at least three unit tests for technical edge cases. You have to define the details of those edge cases yourself. Samples for technical edge cases could be:
+3. Write at least two unit tests for technical edge cases. You have to define the details of those edge cases yourself. Samples for technical edge cases could be:
    * A parameter is `null` but `null` is not a valid input.
    * Method is called with an empty detection collection.
    * Detections contain a negative camera ID.
@@ -144,8 +146,8 @@ The following combination is not ok because the car leaves the city twice withou
 | Detection ID | Camera ID | Detected LP | Detection Timestamp |
 | -----------: | --------: | ----------- | ------------------- |
 |            0 |         0 | L-123XY     | 2022-01-11T07:30:00 |
-|            1 |       200 | L-123XYZ    | 2022-01-11T14:13:00 |
-|            2 |       200 | L-123XYZ    | 2022-01-11T15:13:00 |
+|            1 |       200 | L-123XY     | 2022-01-11T14:13:00 |
+|            2 |       200 | L-123XY     | 2022-01-11T15:13:00 |
 
 Expected error result:
 

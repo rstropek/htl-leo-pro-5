@@ -1,0 +1,30 @@
+name: Build and test
+
+on: push
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: ⚙️ Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.x
+    
+    - name: 📦 Restore dependencies
+      working-directory: starter-solution
+      run: dotnet restore
+    
+    - name: ⚒️ Build
+      working-directory: starter-solution
+      run: dotnet build --no-restore
+    
+    - name: 🧪 Test
+      working-directory: starter-solution
+      run: dotnet test --no-build
