@@ -184,4 +184,39 @@ public class TestCameraDetectionValidator
         var errors = validator.ValidateDetections(Array.Empty<CameraDetection>());
         Assert.Empty(errors);
     }
+
+    [Fact]
+    public void Too_Long_LP()
+    {
+        var detections = new CameraDetection[]
+        {
+            new(0, 0, "LL-1234AB",     DateTime.Parse("2022-01-11T07:30:00")),
+        };
+
+        var validator = new CameraDetectionValidator();
+        var errors = validator.ValidateDetections(detections);
+        Assert.Single(errors);
+
+        Assert.Equal(new[]
+        {
+            new DetectionError(0, ErrorType.InvalidLP),
+        }, errors);
+    }
+
+    [Fact]
+    public void Additional_EntryAfterLeave()
+    {
+        // RS: Logic error, this case (enter, leave, enter, leave) does not work (-2)
+        var detections = new CameraDetection[]
+        {
+            new(0,   0, "L-123XY", DateTime.Parse("2022-01-11T07:30:00")),
+            new(1, 200, "L-123XY", DateTime.Parse("2022-01-11T08:10:00")),
+            new(2,   0, "L-123XY", DateTime.Parse("2022-01-11T09:30:00")),
+            new(3, 200, "L-123XY", DateTime.Parse("2022-01-11T10:10:00")),
+        };
+
+        var validator = new CameraDetectionValidator();
+        var errors = validator.ValidateDetections(detections);
+        Assert.Empty(errors);
+    }
 }
