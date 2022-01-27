@@ -38,13 +38,15 @@
 
         <TextBlock Grid.Row="1" Grid.Column="1" Text="Achtung! Die Operationen, die Sie hier ausführen, löschen Daten aus der DB. Bitte bestätigen Sie, dass Sie sicher sind, dass Sie diese Operationen ausführen wollen:" Grid.ColumnSpan="2"/>
 
-        <ComboBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" ItemsSource="{Binding Path=Confirmations}" 
-                  SelectedItem="{Binding Path=SelectedConfirmation}" />
+        <!-- Fill combobox with confirmation options -->
+        <ComboBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" />
 
-        <Button Grid.Row="4" Grid.Column="1" Style="{StaticResource Left}"
-                Click="OnClear" IsEnabled="{Binding Path=DbActionsEnabled}">Clear</Button>
+        <!-- Clear button must be disabled until a user has confirmed.
+             Button must also be disabled if clear of fill operation is currently running. -->
+        <Button Grid.Row="4" Grid.Column="1" Style="{StaticResource Left}">Clear</Button>
 
-        <Button Grid.Row="4" Grid.Column="2" Style="{StaticResource Right}"
-                Click="OnFill" IsEnabled="{Binding Path=DbActionsEnabled}">Fill</Button>
+        <!-- Fill button must be disabled until a user has confirmed.
+             Button must also be disabled if clear of fill operation is currently running. -->
+        <Button Grid.Row="4" Grid.Column="2" Style="{StaticResource Right}">Fill</Button>
     </Grid>
 </Window>

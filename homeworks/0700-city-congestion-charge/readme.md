@@ -73,6 +73,7 @@ The following data model has been designed based on the business rules described
     * Van
     * SUV
     * Other
+  * Flag indicating whether the car is a hybrid or an electric car
 
 * *Owner* represents the person currently owning a car. Properties of an owner:
   * ID (system-provided identification number)
@@ -99,3 +100,4 @@ The following data model has been designed based on the business rules described
 
 1. [Unit testing](part-1-unit-testing)
 2. [Unit testing](../../lectures/0900-ccc-cameras/readme.md)
+3. [WPF](part-2-wpf)

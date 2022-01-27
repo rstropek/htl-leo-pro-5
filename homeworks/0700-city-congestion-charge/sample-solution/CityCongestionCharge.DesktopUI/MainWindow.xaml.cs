@@ -59,6 +59,7 @@ public partial class MainWindow : Window
 
     public CarTypeDescription? SelectedCarType { get; set; }
     public bool OnlyInside { get; set; } = false;
+    public bool OnlyMultiCarDetections { get; set; } = false;
     public string LicensePlateFilter { get; set; } = string.Empty;
 
     private async void OnLoaded(object sender, RoutedEventArgs e) => await Refresh();
@@ -72,7 +73,7 @@ public partial class MainWindow : Window
         // Note: Students should put filter logic in Data library and reuse code between
         //       web API and WPF.
         foreach (var detection in await context
-            .FilteredDetections(SelectedCarType?.CarType, LicensePlateFilter, OnlyInside)
+            .FilteredDetections(SelectedCarType?.CarType, LicensePlateFilter, OnlyInside, OnlyMultiCarDetections)
             .ToListAsync())
         {
             Detections.Add(detection);

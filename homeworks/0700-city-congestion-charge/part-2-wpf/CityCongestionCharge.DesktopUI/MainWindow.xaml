@@ -85,22 +85,26 @@
                 <TextBlock Text="City Congestion Charge" Style="{StaticResource HeaderHeroText}" />
                 <TextBlock Text="for a livable city" Style="{StaticResource HeaderSubtitle}" />
             </StackPanel>
-            <Button Style="{StaticResource HeaerDbAdminButton}" Click="DbAdmin">DB Administration</Button>
+            <!-- Open the DbAdminWindow when the user clicks on this button -->
+            <Button Style="{StaticResource HeaerDbAdminButton}">DB Administration</Button>
         </Grid>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" Style="{StaticResource FilterPanel}">
             <TextBlock Text="Car Type:" Style="{StaticResource FilterText}" />
-            <ComboBox Style="{StaticResource FilterCombo}" ItemsSource="{Binding Path=CarTypes}" 
-                      DisplayMemberPath="Description" SelectedItem="{Binding Path=SelectedCarType}" />
+            <!-- Fill this combobox with all available car types (see CarTypes property) -->
+            <ComboBox Style="{StaticResource FilterCombo}" />
             <TextBlock Text="License Plate:" Style="{StaticResource FilterText}" />
-            <TextBox Style="{StaticResource LicensePlateFilter}" Text="{Binding Path=LicensePlateFilter}" />
-            <CheckBox Style="{StaticResource FilterCheckbox}" IsChecked="{Binding Path=OnlyInside}">Only detections inside city</CheckBox>
-            <CheckBox Style="{StaticResource FilterCheckbox}" IsChecked="{Binding Path=OnlyMultiCarDetections}">Only multi-car detections</CheckBox>
-            <Button Style="{StaticResource FilterButton}" Click="OnRefresh">Refresh</Button>
+            <TextBox Style="{StaticResource LicensePlateFilter}" />
+            <CheckBox Style="{StaticResource FilterCheckbox}">Only detections inside city</CheckBox>
+            <CheckBox Style="{StaticResource FilterCheckbox}">Only multi-car detections</CheckBox>
+            <!-- Fill the list of car detections below using the filter conditions above when the
+                 user clicks on the following button -->
+            <Button Style="{StaticResource FilterButton}">Refresh</Button>
         </StackPanel>
 
         <ScrollViewer Grid.Row="2">
-            <ItemsControl ItemsSource="{Binding Path=Detections}">
+            <!-- Fill the following ItemsControl with all detections -->
+            <ItemsControl>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Border Style="{StaticResource DetectionCard}">
@@ -113,11 +117,13 @@
                                     <ColumnDefinition Width="250" />
                                     <ColumnDefinition Width="125" />
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Text="{Binding Path=MovementType}" Style="{StaticResource MovementType}" />
-                                <TextBlock Grid.Row="1" Text="{Binding Path=Taken, StringFormat=D, ConverterCulture=de-AT}" 
-                                           Style="{StaticResource Taken}"/>
-                                <ItemsControl Grid.Column="1" ItemsSource="{Binding DetectedCars}"
-                                              DisplayMemberPath="LicensePlate" />
+                                <!-- Add movement type to following TextBlock -->
+                                <TextBlock Style="{StaticResource MovementType}" />
+                                <!-- Add date/time when the detection was taken to following TextBlock -->
+                                <TextBlock Grid.Row="1" Style="{StaticResource Taken}"/>
+                                <!-- Fill the following items control with the license plates of all 
+                                     detected cars of the current detection record -->
+                                <ItemsControl Grid.Column="1" />
                             </Grid>
                         </Border>
                     </DataTemplate>

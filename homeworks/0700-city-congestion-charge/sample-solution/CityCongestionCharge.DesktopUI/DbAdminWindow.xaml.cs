@@ -19,12 +19,26 @@ public partial class DbAdminWindow : Window, INotifyPropertyChanged
         this.context = context;
     }
 
-    public List<string?> Confirmations { get; } = new() { null, "Yes, I confirm" };
+    public List<string> Confirmations { get; } = new() { string.Empty, "Yes, I confirm" };
 
-    public bool Confirmed => SelectedConfirmation != null;
+    public bool DbActionsEnabled => !string.IsNullOrEmpty(SelectedConfirmation) && !IsRunning;
 
-    private string? selectedConfirmation = null;
-    public string? SelectedConfirmation
+    private bool isRunning = false;
+    public bool IsRunning
+    {
+        get => isRunning;
+        set
+        {
+            if (value != isRunning)
+            {
+                isRunning = value;
+                PropertyChanged?.Invoke(this, new(nameof(DbActionsEnabled)));
+            }
+        }
+    }
+
+    private string selectedConfirmation = string.Empty;
+    public string SelectedConfirmation
     {
         get => selectedConfirmation;
         set
@@ -33,16 +47,38 @@ public partial class DbAdminWindow : Window, INotifyPropertyChanged
             {
                 selectedConfirmation = value;
                 PropertyChanged?.Invoke(this, new(nameof(SelectedConfirmation)));
-                PropertyChanged?.Invoke(this, new(nameof(Confirmed)));
+                PropertyChanged?.Invoke(this, new(nameof(DbActionsEnabled)));
             }
         }
     }
 
     private async void OnClear(object sender, RoutedEventArgs e)
-        => await CreateWriter().ClearAll();
+    {
+        IsRunning = true;
+        try
+        {
+            await CreateWriter().ClearAll();
+            MessageBox.Show("DB has been cleared", "CCC", MessageBoxButton.OK);
+        }
+        finally
+        {
+            IsRunning = false;
+        }
+    }
 
     private async void OnFill(object sender, RoutedEventArgs e)
-        => await CreateWriter().Fill();
+    {
+        IsRunning = true;
+        try
+        {
+            await CreateWriter().Fill();
+            MessageBox.Show("DB has been filled", "CCC", MessageBoxButton.OK);
+        }
+        finally
+        {
+            IsRunning = false;
+        }
+    }
 
     private DemoDataWriter CreateWriter()
     {
