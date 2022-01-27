@@ -98,3 +98,4 @@ The following data model has been designed based on the business rules described
 ## Exercises
 
 1. [Unit testing](part-1-unit-testing)
+2. [Unit testing](../../lectures/0900-ccc-cameras/readme.md)
