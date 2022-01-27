@@ -19,9 +19,13 @@ The starter solution also contains a skeleton for the WPF UI ([*CityCongestionCh
 * Display a list of all *detections* based on the filter options included in the WPF skeleton (car type, license plate, only detections *inside* the city, only detections with multiple cars).
   * **Note**: Try to encapsulate the query logic in a helper function inside the [*CityCongestionCharge.Data*](CityCongestionCharge.Data) project. Avoid putting the data access code directly into the WPF code.
 
+  ![List of detections](list-of-detections.png)
+
 * Launch the [*DbAdminWindow*](CityCongestionCharge.DesktopUI/DbAdminWindow.xaml) when the user clicks the *DB Administration* button.
   * Call the [`DemoDataWriter.ClearAll` and `DemoDataWriter.Fill` methods](CityCongestionCharge.Data/DemoDataGenerator.cs) when the user clicks the corresponding buttons.
   * Note the requirements in [*DbAdminWindow*](CityCongestionCharge.DesktopUI/DbAdminWindow.xaml) regarding enabling/disabling of the buttons.
+
+  ![DB Admin](db-admin.png)
 
 ## Tips
 
