@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CityCongestionCharge.Data",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CityCongestionCharge.Data.Tests", "CityCongestionCharge.Data.Tests\CityCongestionCharge.Data.Tests.csproj", "{B3714907-1EA8-4A2B-A538-B19EB0C1A85A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CityCongestionCharge.DesktopUI", "CityCongestionCharge.DesktopUI\CityCongestionCharge.DesktopUI.csproj", "{3D91C056-F273-4EB2-8500-A38CCA9615BF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B3714907-1EA8-4A2B-A538-B19EB0C1A85A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3714907-1EA8-4A2B-A538-B19EB0C1A85A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3714907-1EA8-4A2B-A538-B19EB0C1A85A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D91C056-F273-4EB2-8500-A38CCA9615BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D91C056-F273-4EB2-8500-A38CCA9615BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D91C056-F273-4EB2-8500-A38CCA9615BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D91C056-F273-4EB2-8500-A38CCA9615BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

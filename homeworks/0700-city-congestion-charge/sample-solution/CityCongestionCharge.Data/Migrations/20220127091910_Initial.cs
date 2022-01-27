@@ -50,6 +50,7 @@ namespace CityCongestionCharge.Data.Migrations
                     Model = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     Color = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     CarType = table.Column<int>(type: "int", nullable: false),
+                    IsElectricOrHybrid = table.Column<bool>(type: "bit", nullable: false),
                     OwnerId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>

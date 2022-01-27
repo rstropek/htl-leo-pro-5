@@ -66,10 +66,15 @@ public class DemoDataGenerator
             .RuleFor(u => u.Address, f => $"{f.Address.StreetAddress()}, {f.Address.City()}");
         result.Owners = testOwners.Generate(NUMBER_OF_OWNERS);
 
-        // Note: No async here because this method is absolutely not performance critical and we want to focus
-        //       on demo data generation, not async development. In practice however, always prefer async
-        //       over sync programming!
-        var makeModels = new HttpClient().GetFromJsonAsync<MakeModel[]>("https://vehicle-data.azurewebsites.net/api/models").Result;
+        var makeModels = new[]
+        {
+            new MakeModel("VW", "Golf"),
+            new MakeModel("VW", "Polo"),
+            new MakeModel("Toyota", "Prius"),
+            new MakeModel("BMW", "i3"),
+            new MakeModel("Tesla", "Model S"),
+            new MakeModel("Tesla", "Model X"),
+        };
         var makes = makeModels!.Select(mm => mm.Make).Distinct().ToArray();
 
         var rand = new Random();
@@ -79,6 +84,7 @@ public class DemoDataGenerator
             .RuleFor(b => b.Id, _ => withIds ? ++carIds : 0)
             .RuleFor(b => b.LicensePlate, f => $"{f.Random.AlphaNumeric(2).ToUpperInvariant()}-{f.Random.Number(10, 99)}{f.Random.AlphaNumeric(2).ToUpperInvariant()}")
             .RuleFor(b => b.Make, _ => makes.Skip(rand.Next(makes.Length - 1)).First())
+            .RuleFor(b => b.Owner, f => f.PickRandom(testOwners))
             .RuleFor(b => b.Model, (_, dc) =>
             {
                 var models = makeModels!.Where(mm => mm.Make == dc.Make).ToArray();
@@ -87,6 +93,45 @@ public class DemoDataGenerator
             .RuleFor(b => b.Color, f => f.Commerce.Color())
             .RuleFor(b => b.CarType, f => f.PickRandom<CarType>());
         result.Cars = testCars.Generate(NUMBER_OF_CARS);
+
+        var testDetections = new List<Detection>();
+        foreach(var car in result.Cars)
+        {
+            var enter = new Detection()
+            {
+                MovementType = MovementType.Entering,
+                PhotoUrl = "https://somecar.com/photo.jpg",
+                Taken = DateTime.Now.AddDays(rand.Next(10))
+            };
+            enter.DetectedCars.Add(car);
+            car.Detections.Add(enter);
+            testDetections.Add(enter);
+
+            for (var i = 0; i < 5; i++)
+            {
+                var inside = new Detection()
+                {
+                    MovementType = MovementType.DrivingInside,
+                    PhotoUrl = "https://somecar.com/photo.jpg",
+                    Taken = enter.Taken.AddMinutes(rand.Next(120)),
+                };
+                inside.DetectedCars.Add(car);
+                car.Detections.Add(inside);
+                testDetections.Add(inside);
+            }
+
+            var leave = new Detection()
+            {
+                MovementType = MovementType.Leaving,
+                PhotoUrl = "https://somecar.com/photo.jpg",
+                Taken = enter.Taken.AddHours(2),
+            };
+            leave.DetectedCars.Add(car);
+            car.Detections.Add(leave);
+            testDetections.Add(leave);
+        }
+
+        result.Detections = testDetections;
 
         return result;
     }

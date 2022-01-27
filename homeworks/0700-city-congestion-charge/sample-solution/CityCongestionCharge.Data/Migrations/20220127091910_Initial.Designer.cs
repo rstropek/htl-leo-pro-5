@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CityCongestionCharge.Data.Migrations
 {
     [DbContext(typeof(CccDataContext))]
-    [Migration("20220105104711_Trips")]
-    partial class Trips
+    [Migration("20220127091910_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -54,6 +54,9 @@ namespace CityCongestionCharge.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<bool>("IsElectricOrHybrid")
+                        .HasColumnType("bit");
 
                     b.Property<string>("LicensePlate")
                         .IsRequired()
@@ -163,33 +166,6 @@ namespace CityCongestionCharge.Data.Migrations
                     b.ToTable("Payments");
                 });
 
-            modelBuilder.Entity("CityCongestionCharge.Data.Trip", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("CarId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("DrivenDuringRushHours")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("Entering")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("Leaving")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CarId");
-
-                    b.ToTable("Trips");
-                });
-
             modelBuilder.Entity("CarDetection", b =>
                 {
                     b.HasOne("CityCongestionCharge.Data.Car", null)
@@ -227,22 +203,9 @@ namespace CityCongestionCharge.Data.Migrations
                     b.Navigation("Car");
                 });
 
-            modelBuilder.Entity("CityCongestionCharge.Data.Trip", b =>
-                {
-                    b.HasOne("CityCongestionCharge.Data.Car", "Car")
-                        .WithMany("Trips")
-                        .HasForeignKey("CarId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Car");
-                });
-
             modelBuilder.Entity("CityCongestionCharge.Data.Car", b =>
                 {
                     b.Navigation("Payments");
-
-                    b.Navigation("Trips");
                 });
 
             modelBuilder.Entity("CityCongestionCharge.Data.Owner", b =>
