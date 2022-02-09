@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net6.0-windows</TargetFramework>
+        <Nullable>enable</Nullable>
+        <UseWPF>true</UseWPF>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Resource Include="Images\**\*.png" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Sokoban.Logic\Sokoban.Logic.csproj" />
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,58 @@
+﻿@page "/"
+
+<div class="game" @onclick="FocusInput">
+    @foreach (var row in Game.Rows)
+    {
+        <div class="row">
+            @foreach (var cell in row.Cells)
+            {
+                <div class="cell">
+                    <img src="@cell.ImagePath" />
+                </div>
+            }
+        </div>
+    }
+
+    <img class="player" src="@Game.Player.ImagePath" 
+        style="left: @(Game.Player.Position.CellIx * 64)px; top: @(Game.Player.Position.RowIx * 64)px;" />
+</div>
+
+<!--
+    It is pretty hard to respond to document.keydown in Blazor.
+    Therefore, we create an insible input and react on its keydown event.
+    We just have to make sure that the input has the focus.
+-->
+<input type="text" @ref="input" @onkeydown="Okd" />
+
+@code {
+    private ElementReference input;
+
+    public SokobanGame Game { get; }
+
+    public Index()
+    {
+        Game = new();
+        Game.StartLevel(Levels.GetLevel(0));
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await input.FocusAsync();
+        }
+    }
+
+    private async Task FocusInput()
+    {
+        await input.FocusAsync();
+    }
+
+    public void Okd(KeyboardEventArgs e)
+    {
+        if (e.Key.StartsWith("Arrow"))
+        {
+            Game.MovePlayer(KeyToDirection.Convert(e.Key));
+        }
+    }
+}

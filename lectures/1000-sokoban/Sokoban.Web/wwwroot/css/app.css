@@ -1,0 +1,36 @@
+﻿html, body {
+    margin: 20px;
+}
+
+.game {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.cell {
+    width: 64px;
+    height: 64px;
+    margin: 0;
+}
+
+img {
+    width: 64px;
+    height: 64px;
+}
+
+    img.player {
+        position: absolute;
+    }
+
+input {
+    width: 0;
+    height: 0;
+    position: fixed;
+    left: -10px;
+}
