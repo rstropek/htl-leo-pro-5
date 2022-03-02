@@ -56,6 +56,7 @@ public class DemoDataGenerator
     /// </remarks>
     public DemoData Generate(bool withIds = false)
     {
+        var calc = new ChargeCalculator();
         var result = new DemoData();
 
         var ownerIds = 0;
@@ -95,6 +96,7 @@ public class DemoDataGenerator
         result.Cars = testCars.Generate(NUMBER_OF_CARS);
 
         var testDetections = new List<Detection>();
+        var testPayments = new List<Payment>();
         foreach(var car in result.Cars)
         {
             var enter = new Detection()
@@ -154,9 +156,44 @@ public class DemoDataGenerator
             leave.DetectedCars.Add(car);
             car.Detections.Add(leave);
             testDetections.Add(leave);
+
+            var paymentDate = new DateTime(enter.Taken.Year, enter.Taken.Month, enter.Taken.Day);
+            var charge = calc.CalculateFee(new(
+                new ChargeCalculator.Trip[]
+                {
+                    new(enter.Taken, leave.Taken, car.Detections
+                        .Where(d => d.MovementType == MovementType.DrivingInside)
+                        .Select(d => d.Taken)
+                        .ToArray())
+                }, 
+                paymentDate, 
+                car.CarType, 
+                car.IsElectricOrHybrid));
+            testPayments.Add(new()
+            {
+                Car = car,
+                PaidAmount = charge,
+                PaidForDate = paymentDate,
+                PayingPerson = $"{car.Owner!.LastName} {car.Owner!.FirstName}"
+            });
         }
 
         result.Detections = testDetections;
+
+        // Add some random payments
+        for (var i = 0; i < 15; i++)
+        {
+            var car = result.Cars[rand.Next(result.Cars.Count)];
+            testPayments.Add(new()
+            {
+                Car = car,
+                PaidAmount = rand.Next(1, 10),
+                PaidForDate = DateTime.Today.AddDays(rand.Next(20)),
+                PayingPerson = $"{car.Owner!.LastName} {car.Owner!.FirstName}"
+            });
+        }
+
+        result.Payments = testPayments;
 
         return result;
     }
