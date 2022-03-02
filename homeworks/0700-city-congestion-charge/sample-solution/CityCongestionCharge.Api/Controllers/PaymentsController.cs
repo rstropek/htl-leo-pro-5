@@ -29,6 +29,7 @@ public class PaymentsController : ControllerBase
         public DateTime PaidForDate { get; set; }
         public decimal PaidAmount { get; set; }
         public string? PayingPerson { get; set; }
+        public PaymentType PaymentType { get; set; }
         public string LicensePlate { get; set; } = string.Empty;
     }
 
@@ -42,6 +43,7 @@ public class PaymentsController : ControllerBase
             PaidAmount = p.PaidAmount,
             PayingPerson = p.PayingPerson,
             PaidForDate = p.PaidForDate,
+            PaymentType = p.PaymentType,
             LicensePlate = p.Car!.LicensePlate,
         };
 
@@ -75,7 +77,7 @@ public class PaymentsController : ControllerBase
     /// <summary>
     /// Gets a filtered list of payments
     /// </summary>
-    /// <param name="licensePlateFilter">Optional filter for licensePlate</param>
+    /// <param name="paymentTypeFilter">Optional filter for <see cref="Payment.PaymentType"/></param>
     /// <param name="onlyFuturePayments">Optional filter for getting only payments regarding days in the future</param>
     /// <param name="onlyAnonymous">Optional filter for getting only anonymous payments (i.e. payments without <see cref="Payment.PayingPerson"/>)</param>
     /// <returns>
@@ -83,11 +85,11 @@ public class PaymentsController : ControllerBase
     /// </returns>
     [HttpGet(Name = nameof(GetPayments))]
     public ActionResult<IEnumerable<PaymentResultDto>> GetPayments(
-        [FromQuery(Name = "lpFilter")] string? licensePlateFilter,
+        [FromQuery(Name = "type")] PaymentType? paymentTypeFilter,
         [FromQuery(Name = "future")] bool? onlyFuturePayments,
         [FromQuery(Name = "anonym")] bool? onlyAnonymous)
     {
-        return Ok(context.FilteredPayments(licensePlateFilter, onlyFuturePayments, onlyAnonymous)
+        return Ok(context.FilteredPayments(paymentTypeFilter, onlyFuturePayments, onlyAnonymous)
             .Select(p => PaymentToResultDto(p)));
     }
 
@@ -103,16 +105,19 @@ public class PaymentsController : ControllerBase
         return Ok(context.Payments
             .Where(p => p.Car!.Detections.Any(d => d.Taken.Year == p.PaidForDate.Year
                 && d.Taken.Month == p.PaidForDate.Month && d.Taken.Day == p.PaidForDate.Day))
+            .OrderBy(p => p.Car!.LicensePlate)
             .Select(p => new PaymentWithDetectionDto
             {
                 PaymentId = p.Id,
                 LicensePlate = p.Car!.LicensePlate,
                 PaidAmount = p.PaidAmount,
-                DetectionDetails = p.Car.Detections.Select(d => new DetectionDetailDto
-                {
-                    Taken = d.Taken,
-                    MultipleCarsOnOneDetection = d.DetectedCars.Count > 1
-                })
+                DetectionDetails = p.Car.Detections
+                    .OrderBy(d => d.Taken)
+                    .Select(d => new DetectionDetailDto
+                    {
+                        Taken = d.Taken,
+                        MultipleCarsOnOneDetection = d.DetectedCars.Count > 1
+                    })
             }));
     }
 

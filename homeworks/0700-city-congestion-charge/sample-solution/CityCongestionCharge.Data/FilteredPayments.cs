@@ -4,14 +4,14 @@ namespace CityCongestionCharge.Data;
 
 public partial class CccDataContext
 {
-    public IQueryable<Payment> FilteredPayments(string? licensePlateFilter,
+    public IQueryable<Payment> FilteredPayments(PaymentType? paymentTypeFilter,
         bool? onlyFuturePayments, bool? onlyAnonymous)
     {
         IQueryable<Payment> payments = Payments.Include(p => p.Car);
 
-        if (licensePlateFilter != null)
+        if (paymentTypeFilter.HasValue)
         {
-            payments = payments.Where(p => p.Car!.LicensePlate.Contains(licensePlateFilter));
+            payments = payments.Where(p => p.PaymentType == paymentTypeFilter);
         }
 
         if (onlyFuturePayments is true)
