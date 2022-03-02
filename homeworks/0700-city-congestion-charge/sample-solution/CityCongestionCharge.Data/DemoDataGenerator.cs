@@ -204,6 +204,16 @@ public class DemoDataWriter
         var data = generator.Generate();
 
         // Take generated demo data and write it to DB.
+        // You have to fill the following DbSets:
+        // - Owners
+        // - Cars
+        // - Payments
+        // - Detections
+
+        // The demo data is in the collections inside of
+        // the data variable. The collections have the same
+        // name as the DbSets in the data context.
+
         context.Owners.AddRange(data.Owners);
         context.Cars.AddRange(data.Cars);
         context.Payments.AddRange(data.Payments);
