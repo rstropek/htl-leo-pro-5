@@ -188,8 +188,8 @@ public class DemoDataGenerator
             {
                 Car = car,
                 PaidAmount = rand.Next(1, 10),
-                PaidForDate = DateTime.Today.AddDays(rand.Next(20)),
-                PayingPerson = $"{car.Owner!.LastName} {car.Owner!.FirstName}"
+                PaidForDate = DateTime.Today.AddDays(-10).AddDays(rand.Next(20)),
+                PayingPerson = rand.NextDouble() < 0.5d ? $"{car.Owner!.LastName} {car.Owner!.FirstName}" : null
             });
         }
 
