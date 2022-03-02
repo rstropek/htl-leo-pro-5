@@ -97,6 +97,7 @@ namespace CityCongestionCharge.Data.Migrations
                     PaidForDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     PaidAmount = table.Column<decimal>(type: "decimal(8,2)", precision: 8, scale: 2, nullable: false),
                     PayingPerson = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    PaymentType = table.Column<int>(type: "int", nullable: false),
                     CarId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>

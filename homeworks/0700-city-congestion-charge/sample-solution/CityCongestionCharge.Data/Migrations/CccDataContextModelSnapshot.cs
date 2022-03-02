@@ -17,7 +17,7 @@ namespace CityCongestionCharge.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.1")
+                .HasAnnotation("ProductVersion", "6.0.2")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -156,6 +156,9 @@ namespace CityCongestionCharge.Data.Migrations
                     b.Property<string>("PayingPerson")
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
+
+                    b.Property<int>("PaymentType")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

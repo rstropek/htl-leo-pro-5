@@ -57,6 +57,14 @@ public class Car
     public List<Detection> Detections { get; set; } = new();
 }
 
+public enum PaymentType
+{
+    Cash,
+    BankTransfer,
+    CreditCard,
+    DebitCard,
+}
+
 public class Payment
 {
     public int Id { get; set; }
@@ -68,6 +76,8 @@ public class Payment
 
     [MaxLength(100)]
     public string? PayingPerson { get; set; }
+
+    public PaymentType PaymentType { get; set; } = PaymentType.Cash;
 
     public Car? Car { get; set; }
 
