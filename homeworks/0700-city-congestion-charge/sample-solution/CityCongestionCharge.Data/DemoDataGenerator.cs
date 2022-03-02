@@ -101,7 +101,7 @@ public class DemoDataGenerator
             {
                 MovementType = MovementType.Entering,
                 PhotoUrl = "https://somecar.com/photo.jpg",
-                Taken = DateTime.Now.AddDays(rand.Next(10))
+                Taken = DateTime.Now.AddDays(rand.Next(2))
             };
             enter.DetectedCars.Add(car);
             car.Detections.Add(enter);
@@ -118,7 +118,26 @@ public class DemoDataGenerator
                 inside.DetectedCars.Add(car);
                 for (var j = rand.Next(5); j > 0; j--)
                 {
-                    inside.DetectedCars.Add(result.Cars[rand.Next(result.Cars.Count)]);
+                    // Find all possible cars (i.e. all cars that are inside the city
+                    // at the point in time when the photo is taken)
+                    var possibleCars = result.Cars
+                        // Car isn't already in detected cars
+                        .Where(c => !inside.DetectedCars.Contains(c))
+                        // Car has entered before current detection
+                        .Where(c => testDetections.Any(t => t.MovementType == MovementType.Entering
+                            && t.DetectedCars.Contains(c)
+                            && t.Taken <= inside.Taken))
+                        // Car will leave after current detection
+                        .Where(c => testDetections.Any(t => t.MovementType == MovementType.Leaving
+                            && t.DetectedCars.Contains(c)
+                            && t.Taken >= inside.Taken))
+                        .ToArray();
+                    if (possibleCars.Length == 0)
+                    {
+                        break;
+                    }
+
+                    inside.DetectedCars.Add(possibleCars[rand.Next(possibleCars.Length)]);
                     car.Detections.Add(inside);
                 }
 
