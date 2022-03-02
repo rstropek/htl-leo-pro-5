@@ -1,0 +1,32 @@
+<h1>New Payment</h1>
+
+<!-- Todo: Add necessary data binding -->
+
+<form>
+    <div class="form-control">
+        <label for="short-description">License Plate:</label>
+        <input type="text" id="license-plate" name="license-plate" required />
+        <p class="error">
+            License plate must not be empty
+        </p>
+    </div>
+    <div class="form-control">
+        <label for="paid-amount">Paid amount:</label>
+        <input type="number" id="paid-amount" name="paid-amount" />
+    </div>
+    <div class="form-control">
+        <label for="paying-person">Paying person:</label>
+        <textarea type="text" rows="3" id="paying-person" name="paying-person"></textarea>
+    </div>
+    <div class="form-control">
+        <label for="payment-type">Payment type:</label>
+        <select name="payment-type" id="payment-type">
+            <option value="0">Cash</option>
+            <option value="1">Bank Transfer</option>
+            <option value="2">Credit Card</option>
+            <option value="3">Debit Card</option>
+        </select>
+    </div>
+    <!-- Disable the following button if form is invalid (i.e. license plate missing) -->
+    <button>Save Payment</button>
+</form>

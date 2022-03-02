@@ -1,0 +1,47 @@
+<h1>Payment List</h1>
+
+<!-- Todo: Add necessary data binding -->
+
+<form fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start start">
+    <div>
+        <label for="bike-type">Payment type:</label>
+        <select name="payment-type" id="payment-type">
+            <option [ngValue]="undefined"></option>
+            <option [ngValue]="0">Cash</option>
+            <option [ngValue]="1">Bank Transfer</option>
+            <option [ngValue]="2">Credit Card</option>
+            <option [ngValue]="3">Debit Card</option>
+        </select>
+    </div>
+    <div>
+        <label for="only-future-payments">Only future payments:</label>
+        <input type="checkbox" id="only-future-payments" name="only-future-payments" />
+    </div>
+    <div>
+        <label for="only-anonymous">Only anonymous payments:</label>
+        <input type="checkbox" id="only-anonymous" name="only-anonymous" />
+    </div>
+    <button>Refresh</button>
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <th class="left">License plate</th>
+            <th class="centered">Type</th>
+            <th class="centered">Paid for date</th>
+            <th class="left">Paying person</th>
+            <th class="right">Paid Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Repeat the following tr-block for each payment -->
+        <tr>
+            <td class="left">...<!-- Add license plate here --></td>
+            <td class="centered">...<!-- Add payment type here  (you can use getPaymentTypeDescription if you want) --></td>
+            <td class="centered">...<!-- Add paid-for-date here. Try to format it nicely. --></td>
+            <td class="left">...<!-- Add paying person here --></td>
+            <td class="right">...<!-- Add paid amount here. Try to format it nicely. --></td>
+        </tr>
+    </tbody>
+</table>

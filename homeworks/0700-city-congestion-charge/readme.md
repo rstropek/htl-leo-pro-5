@@ -86,6 +86,11 @@ The following data model has been designed based on the business rules described
   * Paid-for date (mandatory, date)
   * PaidAmount (mandatory, decimal)
   * PayingPerson (optional string, max. 100 characters long)
+  * Payment type (mandatory)
+    * Cash
+    * Bank transfer
+    * Credit card
+    * Debit card
 
 * *Detection* represents a detection of a car by a traffic camera. Note that a single detection (=photo taken by traffic camera) can contain multiple cars. The photos themselves are not stored in the DB; only URLs to the photos are stored. Properties of a detection:
   * ID (system-provided identification number)
@@ -101,3 +106,4 @@ The following data model has been designed based on the business rules described
 1. [Unit testing](part-1-unit-testing)
 2. [Unit testing](../../lectures/0900-ccc-cameras/readme.md)
 3. [WPF](part-2-wpf)
+4. [Web APIs and Angular](part-3-web)
