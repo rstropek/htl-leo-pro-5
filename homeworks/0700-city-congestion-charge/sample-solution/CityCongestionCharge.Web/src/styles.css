@@ -1,0 +1,77 @@
+@import "zero.css";
+
+html {
+  height: 100%;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: lightgray;
+  height: 100%;
+}
+
+h1 {
+  font-size: 30px;
+  margin-top: 25px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 20px;
+  margin-top: 25px;
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 18px;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+p {
+  font-size: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  line-height: 160%;
+}
+
+label {
+  font-size: 15px;
+}
+
+b {
+  font-weight: bold;
+}
+
+table {
+  margin-top: 20px;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+td {
+  padding: 10px;
+  border: 1px solid darkgray;
+}
+
+th {
+  background-color: lightgray;
+  padding: 10px;
+  border: 1px solid darkgray;
+}
+
+table > tbody > :nth-child(2n) {
+  background-color: #e5e5e5;
+}
+
+.centered {
+  text-align: center;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}

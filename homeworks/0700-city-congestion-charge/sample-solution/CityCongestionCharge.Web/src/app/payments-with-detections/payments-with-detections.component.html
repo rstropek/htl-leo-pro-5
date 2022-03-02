@@ -1,0 +1,23 @@
+<h1>Payments With Detections</h1>
+
+<table *ngIf="payments">
+    <thead>
+        <tr>
+            <th class="left">License Plate</th>
+            <th class="right">Paid Amount</th>
+            <th class="left">Detection dates</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let payment of payments | async">
+            <td class="left">{{ payment.licensePlate }}</td>
+            <td class="right">{{ payment.paidAmount  | currency: 'EUR' }}</td>
+            <td class="left">
+                <div class="detection" *ngFor="let detail of payment.detectionDetails">
+                        {{ detail.taken | date: 'yyyy-MM-dd hh:mm' }}
+                        <span *ngIf="detail.multipleCarsOnOneDetection">(multicar detection)</span>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>

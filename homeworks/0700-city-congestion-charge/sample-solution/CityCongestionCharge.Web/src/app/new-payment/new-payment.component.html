@@ -1,0 +1,32 @@
+<h1>New Payment</h1>
+
+<form #f="ngForm">
+    <div class="form-control">
+        <label for="short-description">License Plate:</label>
+        <input type="text" id="license-plate" name="license-plate" [(ngModel)]="payment.licensePlate" required
+            #licensePlate="ngModel" />
+        <p class="error" *ngIf="licensePlate.dirty && licensePlate.errors?.['required']">
+            License plate must not be empty
+        </p>
+    </div>
+    <div class="form-control">
+        <label for="paid-amount">Paid amount:</label>
+        <input type="number" id="paid-amount" name="paid-amount"
+            [(ngModel)]="payment.paidAmount"/>
+    </div>
+    <div class="form-control">
+        <label for="paying-person">Paying person:</label>
+        <textarea type="text" rows="3" id="paying-person" name="paying-person"
+            [(ngModel)]="payment.payingPerson"></textarea>
+    </div>
+    <div class="form-control">
+        <label for="payment-type">Payment type:</label>
+        <select name="payment-type" id="payment-type" [(ngModel)]="payment.paymentType">
+            <option [ngValue]="0">Cash</option>
+            <option [ngValue]="1">Bank Transfer</option>
+            <option [ngValue]="2">Credit Card</option>
+            <option [ngValue]="3">Debit Card</option>
+        </select>
+    </div>
+    <button [disabled]="f.invalid" (click)="save()">Save Payment</button>
+</form>

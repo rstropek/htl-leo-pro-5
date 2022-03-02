@@ -1,0 +1,28 @@
+form {
+    background-color: lightgray;
+    padding: 10px;
+}
+
+form select {
+    margin-left: 5px;
+}
+
+@media screen and (min-width: 600px) {
+  form > div:not(:first-child) {
+    margin-left: 20px;
+  }
+
+  form > button {
+    margin-left: 20px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  form > div:not(:first-child) {
+    margin-top: 5px;
+  }
+
+  form > button {
+    margin-top: 10px;
+  }
+}

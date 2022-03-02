@@ -1,0 +1,44 @@
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-control {
+  margin-top: 15px;
+}
+
+select {
+  min-height: 30px;
+}
+
+input[type="text"] {
+  width: 100%;
+  max-width: 500px;
+  min-height: 30px;
+}
+
+input[type="number"] {
+  width: 100%;
+  max-width: 500px;
+  min-height: 30px;
+}
+
+textarea {
+  width: 100%;
+  max-width: 500px;
+}
+
+select {
+  width: 100%;
+  max-width: 500px;
+}
+
+button {
+  margin-top: 15px;
+  min-height: 30px;
+}
+
+p.error {
+  color: red;
+  margin-top: 0;
+}

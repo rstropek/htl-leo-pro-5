@@ -1,0 +1,19 @@
+<div class="container" fxLayout="column" fxLayoutAlign="start center">
+  <header fxLayout="column" fxLayoutAlign="end end">
+      <div class="hero-container">
+          <div class="hero">City Congestion Carge</div>
+          <div class="subtitle">Less traffic jams, better living quality</div>
+      </div>
+  </header>
+  <div class="menu" fxLayout="row" fxLayoutAlign="start center">
+      <ul>
+          <li><a routerLink="/" >Home</a></li>
+          <li><a routerLink="/payments" >Payments</a></li>
+          <li><a routerLink="/payments-with-detections" >Payments&nbsp;with&nbsp;detections</a></li>
+          <li><a routerLink="/new-payment" >New&nbsp;Payment</a></li>
+      </ul>
+  </div>
+  <main fxFlex>
+      <router-outlet></router-outlet>
+  </main>
+</div>

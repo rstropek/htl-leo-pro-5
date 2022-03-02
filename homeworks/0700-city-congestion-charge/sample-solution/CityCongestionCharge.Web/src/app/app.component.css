@@ -1,0 +1,105 @@
+.container {
+  height: 100%;
+}
+
+header {
+  background-image: url("/assets/traffic.jpg");
+  background-position: 50% 50%;
+  background-size: cover;
+  width: 100%;
+  max-width: 1000px;
+  min-height: 200px;
+}
+
+header > .hero-container {
+  color: black;
+  background-color: #c0c0c0c0;
+}
+
+header > .hero-container > .hero {
+  font-size: 50px;
+  text-align: right;
+  font-weight: bold;
+  color: black;
+  padding: 20px;
+}
+
+header > .hero-container > .subtitle {
+  font-size: 25px;
+  text-align: right;
+  color: black;
+  padding-right: 20px;
+  padding-bottom: 20px;
+}
+
+.menu {
+  background-color: #202020;
+  width: 100%;
+  max-width: 1000px;
+  color: white;
+  min-height: 35px;
+  font-size: 15px;
+}
+
+.menu > ul {
+  list-style-type: none;
+  margin-left: 25px;
+}
+
+.menu > ul > li {
+  float: left;
+}
+
+.menu > ul > li > a {
+  display: block;
+  color: white;
+  padding: 15px;
+  text-decoration: none;
+}
+
+.menu > ul > li > a:hover {
+  color: yellow;
+}
+
+main {
+  width: 100%;
+  max-width: 1000px;
+  background-color: white;
+  padding: 15px;
+  padding-left: 40px;
+}
+
+@media screen and (max-width: 600px) {
+  header {
+    height: 150px;
+    min-height: 150px;
+  }
+
+  header > .hero-container > .hero {
+    font-size: 30px;
+    padding: 10px;
+  }
+
+  header > .hero-container > .subtitle {
+    font-size: 15px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+  }
+
+  .menu {
+    min-height: 25px;
+    font-size: 12px;
+  }
+
+  .menu > ul {
+    margin-left: 10px;
+  }
+
+  .menu > ul > li > a {
+    padding: 10px;
+  }
+
+  main {
+    padding: 20px;
+  }
+}
