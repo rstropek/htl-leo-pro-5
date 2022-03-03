@@ -32,7 +32,7 @@ The starter solution already contains a [skeleton for the *Angular UI*](CityCong
 
 **Your job**: Complete the payment management corresponding to the requirements in the code documentation of the web UI. You have to implement the following functions:
 
-* List all payments, that have at least on car detection on the *paid-for-date* (see `GetPaymentsWithDetections` in [*PaymentsController*](CityCongestionCharge.Api/Controllers/PaymentsController.cs)). To do that, complete the Angular component [`payments-with-detections`](CityCongestionCharge.Web/src/app/payments-with-detections).
+* List all payments, that have at least one car detection on the *paid-for-date* (see `GetPaymentsWithDetections` in [*PaymentsController*](CityCongestionCharge.Api/Controllers/PaymentsController.cs)). To do that, complete the Angular component [`payments-with-detections`](CityCongestionCharge.Web/src/app/payments-with-detections).
 
   ![Payments with detections](payments-with-detections.png)
 
