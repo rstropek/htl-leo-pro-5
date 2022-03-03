@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Net;
 
-namespace BikeTogether.Api.Controllers;
+namespace CityCongestionCharge.Api.Controllers;
 
 /// <summary>
 /// Web API for managing cars
