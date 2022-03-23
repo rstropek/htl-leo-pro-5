@@ -29,3 +29,10 @@ This is how your final app should look like and work in combination with the *ma
 ## Sample Solution
 
 Once your are done, compare your solution with the given [SampleSolution](SampleSolution). Did you find a better one?
+
+## Web UI (Level 3)
+
+* Start with the given [StarterSolution (level 3)](StarterSolutionLevel3).
+* Complete the web API in [SolverController.cs](StarterSolutionLevel3\Mathler.Solver.WebApi\Controllers\SolverController.cs)
+  * Test the web API with Swagger
+* Complete the Angular UI in [Mathler.WebUI](SampleSolutionLevel3\Mathler.WebUI\src\app).

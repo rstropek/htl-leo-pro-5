@@ -1,0 +1,35 @@
+<h1>Mathler Solver</h1>
+
+<p>
+  Open mathler.com, switch to EASY, and use this tool to find the solution.
+</p>
+
+<div>
+  <div class="input">
+    <label for="expected">Expected Result:</label>
+    <input type="number" id="expected" name="expected" [(ngModel)]="expected" />
+  </div>
+  <div class="normal">
+    <button (click)="set()">Set</button>
+  </div>
+  <div class="input">
+    <label for="formula">Formula:</label>
+    <input type="text" id="formula" name="formula" [(ngModel)]="formula" [disabled]="!expectedIsSet" />
+  </div>
+  <div>
+    <label for="result">Result:</label>
+    <input type="text" id="result" name="result" [(ngModel)]="result" [disabled]="!expectedIsSet" />
+  </div>
+  <div *ngIf="error" class="error">
+    {{error}}
+  </div>
+  <div class="normal">
+    <button (click)="store()" [disabled]="!expectedIsSet">Store</button>
+  </div>
+  <div *ngIf="guess" class="guess">
+    {{guess}}
+  </div>
+  <div class="input">
+    <button (click)="reset()" [disabled]="!expectedIsSet">Reset</button>
+  </div>
+</div>
