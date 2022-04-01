@@ -1,0 +1,76 @@
+﻿<Window x:Class="WoerdleSolver.WpfUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WoerdleSolver.WpfUI"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <Style TargetType="TextBlock" x:Key="Hero">
+            <Setter Property="FontSize" Value="50" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0,10,0,15" />
+        </Style>
+        <Style TargetType="ListBox">
+            <Setter Property="Margin" Value="5" />
+        </Style>
+        <Style TargetType="TextBlock" x:Key="Instruction">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0,5,0,5" />
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="14" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Margin" Value="5,0,5,5" />
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Margin" Value="5,0,5,20" />
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="Wördle Solver"
+                   Style="{StaticResource Hero}" />
+
+        <TextBlock Grid.Row="1" Grid.ColumnSpan="2" 
+                   Text="Open https://wordle.at/ and start guessing..." 
+                   Style="{StaticResource Instruction}" />
+
+        <Label Grid.Row="2">Possible words:</Label>
+        <!-- 
+            List of all possible words. If user clicks on a word, selected
+            word must be copied into guessed word field (see below).
+        -->
+        <ListBox Grid.Column="1" Grid.Row="2" />
+
+        <Label Grid.Row="3">Guessed word:</Label>
+        <TextBox Grid.Column="1" Grid.Row="3" />
+
+        <Label Grid.Row="4">Result:</Label>
+        <TextBox Grid.Column="2" Grid.Row="4" />
+
+        <!-- Stores the guessed word and result in solver -->
+        <Button Grid.Row="5" Grid.Column="1" >Store</Button>
+
+        <!-- Resets everything to initial state (no words guessed yet) -->
+        <Button Grid.Row="6" Grid.Column="1" >Reset</Button>
+    </Grid>
+</Window>

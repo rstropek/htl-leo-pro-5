@@ -1,0 +1,27 @@
+<h1>Wördle Solver</h1>
+
+<p>
+  Open <a href="https://wordle.at/" target="_blank">https://wordle.at/</a> and start guessing...
+</p>
+
+<div>
+  <div class="input">
+    <label for="expected">Word:</label>
+    <select class="possible-words" [(ngModel)]="word">
+      <option *ngFor="let pv of possibleWords" [ngValue]="pv">{{ pv }}</option>
+    </select>
+  </div>
+  <div>
+    <label for="result">Result:</label>
+    <input type="text" id="result" name="result" [(ngModel)]="result" />
+  </div>
+  <div *ngIf="error" class="error">
+    {{error}}
+  </div>
+  <div class="normal">
+    <button (click)="store()">Store</button>
+  </div>
+  <div class="input">
+    <button (click)="reset()">Reset</button>
+  </div>
+</div>
