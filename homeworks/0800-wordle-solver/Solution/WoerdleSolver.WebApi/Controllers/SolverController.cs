@@ -56,7 +56,7 @@ public class SolverController : ControllerBase
         {
             solver.StoreResult(req.Word, req.Result);
         }
-        catch (Exception ex)
+        catch (ArgumentException ex)
         {
             return BadRequest(new { Error = ex.Message });
         }
